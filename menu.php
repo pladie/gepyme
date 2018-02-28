@@ -22,13 +22,14 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="1" style="height='1' bgcolor='#FFFFFF'"></td>
+			<td colspan="1" bgcolor="#FFFFFF"></td>
 		</tr>
 		<tr>
 			<td>
 				<p class="titmod"><strong>Modulos</strong></p>
 				<p class="modulos">
-				<a target="content" href="./rrhh/menuRRHH.php" title="v1.0.0">  RRHH</a><br>
+				<a target="content" href="./rrhh/menuRRHH.php" title="v1.0.0">RRHH</a><br>
+				<a target="content" href="./stock/menuStock.php" title="v1.0.0">Stock</a><br>
 			</td>
 		</tr>
 		<td>
