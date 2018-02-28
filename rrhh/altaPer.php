@@ -6,11 +6,13 @@
         $nombre = null;
         $dni = null;
         $estado = null;
+        $fecha = null;
          
         // keep track post values
         $nombre = $_POST['nombre'];
         $dni = $_POST['dni'];
-        $estado = $_POST['estado'];
+	$estado = $_POST['estado'];
+        $fecha = $_POST['fecha'];
          
         // validate input
         $valid = true;
@@ -24,16 +26,10 @@
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-            $sql = "INSERT INTO personas (pernombre,perdni,perestado) values(?, ?, ?)";
+            $sql = "INSERT INTO personas (pernombre,perdni,perestado,perfecalta) values(?, ?, ?, ?)";
             $q = $pdo->prepare($sql);
             $q->execute(array($nombre,$dni,$estado));
             
-            $serie=rand(1000, 100000);
-            $text= 'Alta-> ' . $nombre . '|' . $dni .'|' . $estado;
-            $sql = "INSERT INTO log (logserie,loglong) values(?, ?)";
-            $q = $pdo->prepare($sql);
-            $q->execute(array($serie,$text));
-                     
             Database::disconnect();
             header("Location: bmPer.php");
         }
@@ -54,6 +50,7 @@
 						<tr align="left"><th>Nombre :</th><th><input name="nombre" type="text" placeholder="Nombre" value="<?php echo !empty($nombre)?$nombre:'';?>"></th></tr>             
              		<tr align="left"><th>DNI :</th>   <th><input name="dni"    type="text" placeholder="DNI"    value="<?php echo !empty($dni)?$dni:'';?>">      </th></tr>
 		            <tr align="left"><th>Estado :</th><th><input name="estado" type="text" placeholder="Estado" value="<?php echo !empty($estado)?$estado:'';?>"></th></tr>
+		            <tr align="left"><th>Fecha :</th><th><input name="fecha" type="date" placeholder="fecha" value="<?php echo !empty($fecha)?$fecha:'';?>"></th></tr>
 		            <tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
             </table>
             <br>

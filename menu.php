@@ -34,7 +34,7 @@
 		<td>
 			<br><br><br><br><br><br><br><br><br><br><br><br>
 			<hr>
-			<p class="menu">Version: <?php echo $ver.'.'.$rev.'.'.$fix ?>
+			<p class="menu">Version:  <?php echo $ver.'. '.$rev.'. '.$fix ?>
 		</td>
 		<tr>
 			<td>
