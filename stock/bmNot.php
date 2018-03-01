@@ -28,11 +28,11 @@
                             echo '<td>'. $row['stkserie'] . '</td>';
                             echo '<td>'. $row['stkasignacion'] . '</td>';
                             echo '<td align="center">';
-                            echo '<a href="verBien.php?id='.$row['iduser'].'">';
+                            echo '<a href="verBien.php?id='.$row['stkid'].'">';
                             echo '<img alt="" src="../img/eye.png" width="15" height="15"></a>';
         							 echo '</td> ';
         							 echo '<td align="center">';
-                            echo '<a href="modNot.php?id='.$row['iduser'].'">';
+                            echo '<a href="modNot.php?id='.$row['stkid'].'">';
                             echo '<img alt="" src="../img/pencil.png" width="15" height="15"></a>';
                             echo '</td> ';
         							 echo '<td align="center">';

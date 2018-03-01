@@ -1,0 +1,54 @@
+.
+├── bienvenido.html
+├── css
+│   └── gepyme.css
+├── ddbb.sql
+├── fpdf181
+├── head.php
+├── img
+│   └── ...
+├── index.php
+├── menu.php
+├── README.md
+├── rrhh
+│   ├── altaPer.php
+│   ├── baja.php
+│   ├── bmPer.php
+│   ├── bmPer.php~
+│   ├── database.php
+│   ├── menuRRHH.php
+│   ├── modPer.php
+│   └── verPer.php
+├── stock
+│   ├── altaCel.php
+│   ├── altaLin.php
+│   ├── altaMdm.php
+│   ├── altaMon.php
+│   ├── altaNot.php
+│   ├── altaRed.php
+│   ├── altaSer.php
+│   ├── bmCel.php
+│   ├── bmLin.php
+│   ├── bmMdm.php
+│   ├── bmMon.php
+│   ├── bmNot.php
+│   ├── bmRed.php
+│   ├── bmSer.php
+│   ├── database.php
+│   ├── menuStock.php
+│   ├── modCel.php
+│   ├── modLin.php
+│   ├── modMdm.php
+│   ├── modMon.php
+│   ├── modNot.php
+│   ├── modRed.php
+│   ├── modSer.php
+│   ├── reasigCel.php
+│   ├── reasigLin.php
+│   ├── reasigMdm.php
+│   ├── reasigMon.php
+│   ├── reasigNot.php
+│   ├── reasigRed.php
+│   ├── reasigSer.php
+│   └── verBien.php
+└── system.sqlite3

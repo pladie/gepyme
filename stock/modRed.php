@@ -46,7 +46,7 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stkserie = ?, stkasignacion = ? WHERE iduser = ?";
+            $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stkserie = ?, stkasignacion = ? WHERE stkid = ?";
             $q = $pdo->prepare($sql);
             $q->execute(array($marca,$mod,$serie,$asig,$id));
             Database::disconnect();
@@ -55,7 +55,7 @@
     } else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM stock where iduser = ?";
+        $sql = "SELECT * FROM stock where stkid = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         $data  = $q->fetch(PDO::FETCH_ASSOC);

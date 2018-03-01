@@ -10,7 +10,6 @@
                 <h3>Reasignacion de Linea</h3>
             </div>
             <div class="row">
-                           <!-- facnro, facfecha, facproveedor, facimporte, facevaladmin, facevalprod -->  
                 <table class="table">
                   <thead>
                     <tr>
@@ -29,11 +28,11 @@
                             echo '<td>'. $row['stkserie'] . '</td>';
                             echo '<td>'. $row['stkasignacion'] . '</td>';
                             echo '<td align="center">';
-                            echo '<a href="verBien.php?id='.$row['iduser'].'">';
+                            echo '<a href="verBien.php?id='.$row['stkid'].'">';
                             echo '<img alt="" src="../img/eye.png" width="15" height="15"></a>';
         							 echo '</td> ';
         							 echo '<td align="center">';
-                            echo '<a href="modFac.php?id='.$row['iduser'].'">';
+                            echo '<a href="modLin.php?id='.$row['stkid'].'">';
                             echo '<img alt="" src="../img/pencil.png" width="15" height="15"></a>';
                             echo '</td> ';
         							 echo '<td align="center">';
