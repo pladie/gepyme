@@ -28,7 +28,7 @@
             
             $sql = "INSERT INTO personas (pernombre,perdni,perestado,perfecalta) values(?, ?, ?, ?)";
             $q = $pdo->prepare($sql);
-            $q->execute(array($nombre,$dni,$estado,$fecha));
+            $q->execute(array($nombre,$dni,$estado));
             
             Database::disconnect();
             header("Location: bmPer.php");

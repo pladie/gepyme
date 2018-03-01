@@ -28,6 +28,7 @@
 			<td>
 				<p class="titmod"><strong>Modulos</strong></p>
 				<p class="modulos">
+				<a target="content" href="./adm/menuAdm.php" title="v1.0.0">Administracion</a><br>
 				<a target="content" href="./rrhh/menuRRHH.php" title="v1.0.0">RRHH</a><br>
 				<a target="content" href="./stock/menuStock.php" title="v1.0.0">Stock</a><br>
 			</td>

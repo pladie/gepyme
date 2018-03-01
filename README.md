@@ -17,6 +17,12 @@ Esta aplicacion esta probada con:
 
 * FPDF181
 
+**Version 1.2.2**
+
+1. Se agrega el menu de Administracion para la gestion de facturas y calculo del indicador.
+
+2. Se agregan las tablas proveedores y facturas.
+
 **Version 1.1.1**
 
 1. Se agrega la tabla LOG para dejar rastro de las actividades.

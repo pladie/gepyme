@@ -7,17 +7,18 @@
     }
      
     if ( null==$id ) {
-        header("Location: bmMon.php");
+        header("Location: bmPer.php");
     }
      
     if ( !empty($_POST)) {
         
         // keep track post values
-        $id		= $_POST['id'];
-        $marca = $_POST['marca'];
-        $mod   = $_POST['mod'];
-        $serie = $_POST['serie'];
-        $asig  = $_POST['asig'];
+        $id		  = $_POST['id'];
+        $nombre  = $_POST['nombre'];
+        $dni     = $_POST['dni'];
+        $estado  = $_POST['estado'];
+        $fecalta = $_POST['fecalta'];
+        $fecbaja = $_POST['fecbaja'];
          
         // validate input
         $valid = true;
@@ -46,23 +47,24 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stkserie = ?, stkasignacion = ? WHERE stkid = ?";
+            $sql = "UPDATE personas  set pernombre = ?, perdni = ?, perestado = ?, perfecalta = ? WHERE perid = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($marca,$mod,$serie,$asig,$id));
+            $q->execute(array($nombre,$dni,$estado,$fecalta,$id));
             Database::disconnect();
-            header("Location: bmMon.php");
+            header("Location: bmPer.php");
         }
     } else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM stock where stkid = ?";
+        $sql = "SELECT * FROM personas where perid = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
-        $data  = $q->fetch(PDO::FETCH_ASSOC);
-        $marca = $data['stkmarca'];
-        $mod   = $data['stkmodelo'];
-        $serie = $data['stkserie'];
-        $asig  = $data['stkasignacion'];
+        $data    = $q->fetch(PDO::FETCH_ASSOC);
+        $nombre  = $data['pernombre'];
+        $dni     = $data['perdni'];
+        $estado  = $data['perestado'];
+        $fecalta = $data['perfecalta'];
+        $fecbaja = $data['perfecbaja'];
         Database::disconnect();
     }
 ?>
@@ -75,21 +77,14 @@
  
 <body class="body">
 	<div align="center">
-	<h3>Asignacion de Monitor</h3>
-		<form action="modMon.php" method="post">
+		<form action="modPer.php" method="post">
 		<input type="hidden" name="id" value="<?php echo $id; ?>">
-			<table class="table" >		
-				<tr align="left"><th>Marca:</th> <th><input type="text" id="marca" name="marca" tabindex="1" value="<?php echo $marca; ?>"></th></tr>
-				<tr align="left"><th>Modelo:</th><th><input type="text" id="mod"   name="mod"   tabindex="2" value="<?php echo $mod; ?>"></th></tr>
-				<tr align="left"><th>Serie:</th> <th><input type="text" id="serie" name="serie" tabindex="3" value="<?php echo $serie; ?>"></th></tr>
-            <?php
-					$pdo = Database::connect();
-					$sql = "SELECT pernombre FROM personas WHERE perestado = 'Empleado' ORDER BY pernombre;";
-					echo '<tr align="left"><th>Asignacion:</th><th><select name="asig">';
-					foreach ($pdo->query($sql) as $row) {
-						echo '<option value="'. $row['pernombre'] . '">'. $row['pernombre'] . '</option>';
-					} 
-				?>
+			<table class="table" >
+				<thead><tr><th colspan="2">Actualizacion de datos de la Persona</th></tr></thead>		
+				<tr><th>Nombre:</th><th><input type="text" id="nombre"  name="nombre" tabindex="1" value="<?php echo !empty($nombre)?$nombre:''; ?>"></th></tr>
+				<tr><th>DNI:</th>   <th><input type="text" id="dni"     name="dni"    tabindex="2" value="<?php echo !empty($dni)?$dni:''; ?>"></th></tr>
+				<tr><th>Estado:</th><th><input type="text" id="estado"  name="estado" tabindex="3" value="<?php echo !empty($estado)?$estado:''; ?>"></th></tr>
+				<tr><th>Alta:</th>  <th><input type="date" id="fecalta" name="fecalta"tabindex="4" value="<?php echo !empty($fecalta)?$fecalta:''; ?>"></th></tr>
 				<tr><th colspan="2"><input type="submit" value="Actualizar" ></th></tr>
 			</table>
 		</form>

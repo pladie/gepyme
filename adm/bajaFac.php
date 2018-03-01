@@ -13,11 +13,11 @@
         // delete data
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "DELETE FROM personas  WHERE perid = ?";
+        $sql = "DELETE FROM facturas  WHERE idfactura = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         Database::disconnect();
-        header("Location: bmPer.php");
+        header("Location: bmFac.php");
          
     }
 ?>
@@ -32,10 +32,10 @@
 <body class="body">
     <div align="center">
         <div class="row">
-            <h3>Borrado de registo</h3>
+            <h3>Borrado de Factura</h3>
         </div>
                      
-        <form class="form-horizontal" action="baja.php" method="post">
+        <form class="form-horizontal" action="bajaFac.php" method="post">
             <input type="hidden" name="id" value="<?php echo $id;?>"/>
                  <p class="alert alert-error">Esta seguro que quiere eliminar el registro ?</p>
                     <div class="form-actions">

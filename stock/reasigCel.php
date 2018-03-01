@@ -10,7 +10,6 @@
                 <h3>Reasignacion de Celular</h3>
             </div>
             <div class="row">
-                           <!-- facnro, facfecha, facproveedor, facimporte, facevaladmin, facevalprod -->  
                 <table class="table">
                   <thead>
                     <tr>
@@ -19,7 +18,7 @@
                   </thead>
                   <tbody>
                   <?php
-                   include 'database.php';
+                   include '../database.php';
                    $pdo = Database::connect();
                    $sql = 'SELECT * FROM stock WHERE stktipo = "Celular" and stkasignacion NOT IN ("STOCK","BAJA") ORDER BY stkmarca,stkmodelo';      
                    foreach ($pdo->query($sql) as $row) {

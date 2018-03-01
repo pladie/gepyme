@@ -18,7 +18,7 @@
                   </thead>
                   <tbody>
                   <?php
-                   include 'database.php';
+                   include '../database.php';
                    $pdo = Database::connect();
                    $sql = 'SELECT * FROM personas WHERE perestado != "BAJA" ORDER BY pernombre';
                    foreach ($pdo->query($sql) as $row) {

@@ -1,4 +1,13 @@
 .
+├── adm
+│   ├── altaFac.php
+│   ├── bajaFac.php
+│   ├── bmFac.php
+│   ├── database.php
+│   ├── indicFac.php
+│   ├── menuAdm.php
+│   ├── modFac.php
+│   └── verFac.php
 ├── bienvenido.html
 ├── css
 │   └── gepyme.css

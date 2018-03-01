@@ -1,5 +1,5 @@
 <?php
-    require 'database.php';
+    require '../database.php';
  
     if ( !empty($_POST)) {
         // keep track validation errors

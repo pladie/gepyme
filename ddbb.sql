@@ -32,5 +32,23 @@ CREATE TABLE `stock` (
   `stkasignacion` varchar(100) DEFAULT NULL,
   `stkestado` varchar(45) DEFAULT NULL,
   `stkplan` varchar(5) DEFAULT NULL,
-  PRIMARY KEY (`iduser`)
+  PRIMARY KEY (`stkid`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `facturas` (
+  `facid` int(11) NOT NULL AUTO_INCREMENT,
+  `facnro` varchar(45) DEFAULT NULL,
+  `facfecha` varchar(45) DEFAULT NULL,
+  `facimporte` varchar(45) DEFAULT NULL,
+  `facevaladmin` varchar(45) DEFAULT NULL,
+  `facevalprod` varchar(45) DEFAULT NULL,
+  `facproveedor` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`facid`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `proveedores` (
+  `provid` int(11) NOT NULL AUTO_INCREMENT,
+  `provnombre` varchar(45) DEFAULT NULL,
+  `provestado` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`provid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;

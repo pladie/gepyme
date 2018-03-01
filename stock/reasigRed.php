@@ -18,7 +18,7 @@
                   </thead>
                   <tbody>
                   <?php
-                   include 'database.php';
+                   include '../database.php';
                    $pdo = Database::connect();
                    $sql = 'SELECT * FROM stock WHERE stktipo = "Red" and stkasignacion NOT IN ("STOCK","BAJA") ORDER BY stkmarca,stkmodelo';      
                    foreach ($pdo->query($sql) as $row) {
