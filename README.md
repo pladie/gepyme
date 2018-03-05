@@ -17,6 +17,12 @@ Esta aplicacion esta probada con:
 
 * FPDF181
 
+**Version 1.2.3**
+
+1. Fix para poder generar el PDF de la asignacion de bienes.
+
+2. Se cambian las columnas de borrado por la de generar PDF.
+
 **Version 1.2.2**
 
 1. Se agrega el menu de Administracion para la gestion de facturas y calculo del indicador.

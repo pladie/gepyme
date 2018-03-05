@@ -10,11 +10,10 @@
                 <h3>Modificaion de Bienes</h3>
             </div>
             <div class="row">
-                           <!-- facnro, facfecha, facproveedor, facimporte, facevaladmin, facevalprod -->  
                 <table class="table">
                   <thead>
                     <tr>
-                      <th>Marca</th><th>Modelo</th><th>Serie</th><th>Asignacion</th><th>Detalle</th><th>Asignar</th><th>Comprobante</th>
+                      <th>Marca</th><th>Modelo</th><th>Serie</th><th>Asignacion</th><th>Detalle</th><th>Asignar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -36,10 +35,6 @@
                             echo '<a href="modMdm.php?id='.$row['stkid'].'">';
                             echo '<img alt="" src="../img/pencil.png" width="15" height="15"></a>';
                             echo '</td> ';
-        							 echo '<td align="center">';
-                            echo '<a href="pdfBien.php?nombre='.$row['stkasignacion'].'&tipo='.$row['stktipo'].'&marca='.$row['stkmarca'].'&modelo='.$row['stkmodelo'].'&serie='.$row['stkserie'].'">';
-                            echo '<img alt="" src="../img/cancel.png" width="15" height="15"></a>';
-                            echo '</td>';
                             echo '</tr>';
                    }
                    Database::disconnect();

@@ -10,6 +10,7 @@ CREATE TABLE `log` (
   `logdate` datetime DEFAULT CURRENT_TIMESTAMP,
   `logtrans` varchar(45) DEFAULT NULL,
   `logitem` varchar(45) DEFAULT NULL,
+  `loglong` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`logid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
@@ -23,7 +24,7 @@ CREATE TABLE `personas` (
   PRIMARY KEY (`perid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
-CREATE TABLE `stock` (
+CREATE TABLE `bienes` (
   `stkid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `stktipo` varchar(50) DEFAULT NULL,
   `stkmarca` varchar(50) DEFAULT NULL,
