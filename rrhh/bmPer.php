@@ -20,7 +20,7 @@
                   <?php
                    include '../database.php';
                    $pdo = Database::connect();
-                   $sql = 'SELECT * FROM personas WHERE perestado != "BAJA" ORDER BY pernombre';
+                   $sql = 'SELECT * FROM personas WHERE perestado != "BAJA" and pernombre != "STOCK" ORDER BY pernombre';
                    foreach ($pdo->query($sql) as $row) {
                             echo '<tr>';
                             echo '<td>'. $row['pernombre'] . '</td>';

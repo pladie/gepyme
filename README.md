@@ -23,6 +23,8 @@ Esta aplicacion esta probada con:
 
 2. Se agrega tipo y plan al listado de bienes.
 
+3. Fix fecha baja de personas.
+
 **Version 2.0.0**
 
 1. Se agrega Licencia

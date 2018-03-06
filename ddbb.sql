@@ -11,6 +11,9 @@ CHANGE COLUMN `stkserie` `stkserie` VARCHAR(100) NOT NULL ,
 CHANGE COLUMN `stkasignacion` `stkasignacion` VARCHAR(100) NOT NULL ,
 ADD UNIQUE INDEX `stkserie_UNIQUE` (`stkserie` ASC);
 
+ALTER TABLE `personas`
+CHANGE COLUMN `perfecbaja` `perfecbaja` VARCHAR(10);
+
 -- Version 1.0.0
 CREATE TABLE `log` (
   `logid` int(11) NOT NULL AUTO_INCREMENT,
