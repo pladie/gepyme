@@ -11,7 +11,7 @@
     	<table class="table">
 	    	<thead>
             <tr>
-               <th>Asignacion</th><th>Tipo</th><th>Marca</th><th>Modelo</th><th>Serie</th>
+               <th>Asignacion</th><th>Tipo</th><th>Marca</th><th>Modelo</th><th>Serie</th><th>Plan</th>
             </tr>
          </thead>
          <tbody>
@@ -25,7 +25,8 @@
                echo '<td>'. $row['stktipo'] . '</td>';
                echo '<td>'. $row['stkmarca'] . '</td>';
                echo '<td>'. $row['stkmodelo'] . '</td>';
-               echo '<td>'. $row['stkserie'] . '</td>';               
+               echo '<td>'. $row['stkserie'] . '</td>';
+               echo '<td>'. $row['stkplan'] . '</td>';               
 					echo '</tr> ';
                }
             Database::disconnect();

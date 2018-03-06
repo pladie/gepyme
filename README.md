@@ -17,6 +17,12 @@ Esta aplicacion esta probada con:
 
 * FPDF181
 
+**Version 2.0.1**
+
+1. Se agrega indice y unique a la tabla de stock.
+
+2. Se agrega tipo y plan al listado de bienes.
+
 **Version 2.0.0**
 
 1. Se agrega Licencia

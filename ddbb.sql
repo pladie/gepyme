@@ -4,6 +4,14 @@
 -- ------------------------------------------------------
 -- Server version       10.1.30-MariaDB-1~jessie
 
+-- Cambios de 1.0.0 a 2.0.0
+
+ALTER TABLE `stock` 
+CHANGE COLUMN `stkserie` `stkserie` VARCHAR(100) NOT NULL ,
+CHANGE COLUMN `stkasignacion` `stkasignacion` VARCHAR(100) NOT NULL ,
+ADD UNIQUE INDEX `stkserie_UNIQUE` (`stkserie` ASC);
+
+-- Version 1.0.0
 CREATE TABLE `log` (
   `logid` int(11) NOT NULL AUTO_INCREMENT,
   `logserie` varchar(45) NOT NULL,
@@ -24,7 +32,7 @@ CREATE TABLE `personas` (
   PRIMARY KEY (`perid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
-CREATE TABLE `bienes` (
+CREATE TABLE `stock` (
   `stkid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `stktipo` varchar(50) DEFAULT NULL,
   `stkmarca` varchar(50) DEFAULT NULL,
