@@ -59,9 +59,7 @@
 					<tr><td><a target="content" href="./reasigSer.php">Reasignacion de Servidor</a></td></tr>
 				</table>
 			</td>
-		</tr>
-		<tr align="center">
-			<td></td><td>
+			<td>
 				<table class="table">
 					<tr><td><strong>Redes</strong></td></tr>
 					<tr><td><a target="content" href="./altaRed.php">Alta de dispositivo de Red</a></td></tr>
@@ -69,10 +67,10 @@
 					<tr><td><a target="content" href="./reasigRed.php">Reasignacion de dispositivo de Red</a></td></tr>
 				</table>
 			</td>
-			<td></td>
-			
 		</tr>
 	</table>
+	<br><br>
+	<a href="./verBienPorPer.php">Listado de Bienes por Persona</a>
 </div>
 </body>	
 </html>

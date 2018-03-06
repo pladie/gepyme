@@ -17,6 +17,14 @@ Esta aplicacion esta probada con:
 
 * FPDF181
 
+**Version 2.0.0**
+
+1. Se agrega Licencia
+
+2. Se modifica el menu del modulo de stock
+
+3. Se agrega un listado de Bienes asignados.
+
 **Version 1.2.3**
 
 1. Fix para poder generar el PDF de la asignacion de bienes.
