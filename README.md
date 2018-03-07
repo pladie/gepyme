@@ -17,6 +17,12 @@ Esta aplicacion esta probada con:
 
 * FPDF181
 
+**Version 2.0.2**
+
+1. Se agrega modulo de mantenimiento de proveedores (ABM)
+
+2. Fix para el modulo de stock, mantenimiento de dispositivos de red.
+
 **Version 2.0.1**
 
 1. Se agrega indice y unique a la tabla de stock.

@@ -8,19 +8,19 @@
 <div align="center">
 	<h3>Administracion</h3>
 	<table>
-		<tr>
-<!--			<td>
-				<table class="table">
-					<tr><td><strong>Entrevistas</strong></td></tr>
-					<tr><td><a target="content" href="./menuEnt.php">Entrevistas</a></td></tr>
-					<tr><td><br></td></tr>
-				</table>
-			</td>
-			<td>	-->
+		<tr align="center">
+			<td>
 				<table class="table">
 					<tr><td><strong>Facturas</strong></td></tr>
 					<tr><td><a target="content" href="./altaFac.php">Alta de Facturas</a></td></tr>
 					<tr><td><a target="content" href="./bmFac.php">Modificacion de Facturas</a></td></tr>
+				</table>
+			</td>
+			<td>
+				<table class="table">
+					<tr><td><strong>Proveedores</strong></td></tr>
+					<tr><td><a target="content" href="./altaProv.php">Alta de Proveedor</a></td></tr>
+					<tr><td><a target="content" href="./bmProv.php">Modificacion de Proveedor</a></td></tr>
 				</table>
 			</td>
 		</tr>

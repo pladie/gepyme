@@ -20,7 +20,7 @@
                   <?php
                    include '../database.php';
                    $pdo = Database::connect();
-                   $sql = 'SELECT * FROM stock WHERE stktipo = "Red" and stkasignacion = "STOCK" ORDER BY stkmarca,stkmodelo';      
+                   $sql = 'SELECT * FROM stock WHERE stktipo = "Redes" and stkasignacion = "STOCK" ORDER BY stkmarca,stkmodelo';      
                    foreach ($pdo->query($sql) as $row) {
                             echo '<tr>';
                             echo '<td>'. $row['stkmarca'] . '</td>';
