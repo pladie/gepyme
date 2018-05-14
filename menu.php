@@ -13,11 +13,10 @@
 <head>
 	<link href="./css/gepyme.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body class="body">
 
 <hr>
-	<p class="title"><strong>GePyME</strong></p>
-	<p class="subtitle">Sistema integral<br>para PyMES	</a><br>
+	<p class="title"><strong>GePyME</strong></p>Sistema integral<br>para PyMES
 <hr>
 
 <p class="titmod"><strong>Modulos</strong></p>

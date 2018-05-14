@@ -6,7 +6,7 @@
 </head>
 <body class="body">
    <div align="center">
-      <h3>Modificaion de Proveedore</h3>
+      <p class="title"><strong>Modificaion de Proveedore</strong></p>
          <table class="table">
             <thead>
                <tr>
@@ -36,12 +36,14 @@
                   echo '</td>';
                   echo '</tr>';
                }
-                   Database::disconnect();
-                  ?>
-                  </tbody>
-            </table>
+             Database::disconnect();
+             ?>
+         </tbody>
+       </table>
        <br>	
-       <a href="menuAdm.php">Volver</a>
+       <div class="volver">
+			<a href="./menuAdm.php" target="content">Volver</a>
+		 </div>
     </div>
   </body>
 </html>

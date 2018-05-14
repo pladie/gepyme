@@ -36,14 +36,16 @@
  
 <body class="body">
 	<div align="center">
-		<h3>Alta de Proveedor</h3>
+		<p class="title"><strong>Alta de Proveedor</strong></p>
 		<form class="form-horizontal" action="altaProv.php" method="post">
 			<table class="table" >
 				<tr align="left"><th>Razon Social :</th>   <th><input name="nom" type="text" placeholder="Razon Social"   value="<?php echo !empty($nom)?$nom:'';?>"></th></tr>
 				<tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>       
          </table>
          <br>	
-         <a href="menuAdm.php">Volver</a>
+         <div class="volver">
+				<a href="./menuAdm.php" target="content">Volver</a>
+			</div>
        </form>
     </div>
   </body>

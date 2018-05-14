@@ -6,27 +6,36 @@
 </head>
 <body class="body">
 <div align="center">
-	<h3>Administracion</h3>
+	<p class="title"><strong>Administracion</strong></p>
 	<table>
 		<tr align="center">
 			<td>
 				<table class="table">
-					<tr><td><strong>Facturas</strong></td></tr>
-					<tr><td><a target="content" href="./altaFac.php">Alta de Facturas</a></td></tr>
-					<tr><td><a target="content" href="./bmFac.php">Modificacion de Facturas</a></td></tr>
+					<tr><td class="titmod"><strong>Facturas</strong>
+					<ul class="ulint">
+						<li class="liint"><a target="content" href="./altaFac.php">Alta de Facturas</a></li>
+						<li class="liint"><a target="content" href="./bmFac.php">Modificacion de Facturas</a></li>
+					</ul>
+					</td></tr>
 				</table>
 			</td>
 			<td>
 				<table class="table">
-					<tr><td><strong>Proveedores</strong></td></tr>
-					<tr><td><a target="content" href="./altaProv.php">Alta de Proveedor</a></td></tr>
-					<tr><td><a target="content" href="./bmProv.php">Modificacion de Proveedor</a></td></tr>
+					<tr><td class="titmod"><strong>Proveedores</strong>
+					<ul class="ulint">
+						<li class="liint"><a target="content" href="./altaProv.php">Alta de Proveedor</a></li>
+						<li class="liint"><a target="content" href="./bmProv.php">Modificacion de Proveedor</a></li>
+					</ul>
+					</td></tr>
 				</table>
 			</td>
 		</tr>
 	</table>
 	<br>
-	<a target="content" href="./indicFac.php">Indicador Proveedores</a>
+	<div class="volver">
+		<a href="./indicFac.php" target="content">Indicador Proveedores</a>
+	</div>
+	
 </div>
 </body>	
 </html>

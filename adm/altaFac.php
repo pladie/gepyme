@@ -44,9 +44,9 @@
 	<link href="../css/gepyme.css" rel="stylesheet" type="text/css">
 </head>
  
-<body class="body">
+<body>
 	<div align="center">
-		<h3>Alta de Factura</h3>
+		<p class="title"><strong>Alta de Factura</strong></p>
 		<form class="form-horizontal" action="altaFac.php" method="post">
 			<table class="table" >
 				<tr align="left"><th>Factura:</th>   <th><input name="comp" type="text" placeholder="Factura"   value="<?php echo !empty($comp)?$comp:'';?>"></th></tr>
@@ -79,8 +79,10 @@
 				</th></tr>
 				<tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>       
          </table>
-         <br>	
-         <a href="menuAdm.php">Volver</a>
+         <br>
+         <div class="volver">
+         	<a href="menuAdm.php">Volver</a>
+         </div>
        </form>
     </div>
   </body>

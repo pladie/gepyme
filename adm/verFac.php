@@ -27,7 +27,7 @@
  
 <body class="body">
     <div align="center">
-	   <h3>Ver datos Factura</h3>
+	   <p class="title"><strong>Ver datos Factura</strong></p>
 	 	<table class="table" >
 	 		<tr align="left"><th>Factura:</th><th><?php echo $data['facnro'];?></th></tr>
 	 		<tr align="left"><th>Fecha:</th><th><?php echo $data['facfecha'];?></th></tr>
@@ -37,7 +37,9 @@
 	 		<tr align="left"><th>Ev. Prod./Serv.:</th><th><?php echo $data['facevalprod'];?></th></tr>
 	 	</table>
 	 	<br>
-      <a href="bmFac.php">Volver</a>
+	 	<div class="volver">
+	 		<a href="bmFac.php">Volver</a>
+	 	</div>
 	 </div>
 </body>
 </html>

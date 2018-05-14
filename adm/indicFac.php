@@ -7,8 +7,8 @@
  
 <body class="body">
 	<div align="center">
-		<h3>Indicador de Compras</h3>
-		<table class="table" >
+		<p class="title"><strong>Indicador de Compras</strong></p>
+		<table class="tableli" >
       	<thead>
       		<tr><th>Proveedor</th><th>Prom. Ev. Admin.</th><th>Prom. Ev. Prod./Serv.</th></tr>
       	</thead>
@@ -38,6 +38,10 @@
 				?>
 			</tbody>
 		</table>
+		<br>	
+       <div class="volver">
+			<a href="./menuAdm.php" target="content">Volver</a>
+		 </div>
    </div>
   </body>
 </html>
