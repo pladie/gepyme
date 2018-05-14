@@ -19,25 +19,23 @@ Esta aplicacion esta probada con:
 
 **Version 2.0.2**
 
-1. Se agrega modulo de mantenimiento de proveedores (ABM)
+1. Se agrega modulo de mantenimiento de proveedores (ABM).
 
 2. Fix para el modulo de stock, mantenimiento de dispositivos de red.
 
-**Version 2.0.1**
+3. Fix para el borrado de facturas en el modulo adm.
 
-1. Se agrega indice y unique a la tabla de stock.
+4. Se agrega indice y unique a la tabla de stock.
 
-2. Se agrega tipo y plan al listado de bienes.
+5. Se agrega tipo y plan al listado de bienes.
 
-3. Fix fecha baja de personas.
+6. Fix fecha baja de personas.
 
-**Version 2.0.0**
+7. Se agrega Licencia
 
-1. Se agrega Licencia
+8. Se modifica el menu del modulo de stock
 
-2. Se modifica el menu del modulo de stock
-
-3. Se agrega un listado de Bienes asignados.
+9. Se agrega un listado de Bienes asignados.
 
 **Version 1.2.3**
 

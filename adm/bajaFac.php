@@ -13,7 +13,7 @@
         // delete data
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "DELETE FROM facturas  WHERE idfactura = ?";
+        $sql = "DELETE FROM facturas  WHERE facid = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         Database::disconnect();
