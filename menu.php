@@ -1,5 +1,4 @@
 <?php
-	include "langsettings.php";
 	$today = date("YmdHMS");
 	$ver   = `sqlite3 -noheader system.sqlite3 "select valor from system where param='version'  and modulo='system';"`;
 	$rev   = `sqlite3 -noheader system.sqlite3 "select valor from system where param='revision' and modulo='system';"`;

@@ -6,35 +6,35 @@
 </head>
  
 <body class="body">
-    <div align="center">
-    	<h3>Ver detalle de un Bien</h3>
-    	<table class="table">
+   <div align="center">
+   	<p class="title"><strong>Listado de Bienes por Persona</strong>
+    	<table class="tableli">
 	    	<thead>
-            <tr>
-               <th>Asignacion</th><th>Tipo</th><th>Marca</th><th>Modelo</th><th>Serie</th><th>Plan</th>
-            </tr>
+            <tr><th>Asignacion</th><th>Tipo</th><th>Marca</th><th>Modelo</th><th>Serie</th><th>Plan</th></tr>
          </thead>
          <tbody>
-    		<?php
-    			include '../database.php';
-    			$pdo = Database::connect();
-    			$sql = 'SELECT * FROM stock WHERE stkasignacion NOT IN ("BAJA","STOCK") ORDER BY stkasignacion';
-				foreach ($pdo->query($sql) as $row) {
-               echo '<tr>';
-               echo '<td>'. $row['stkasignacion'] . '</td>';
-               echo '<td>'. $row['stktipo'] . '</td>';
-               echo '<td>'. $row['stkmarca'] . '</td>';
-               echo '<td>'. $row['stkmodelo'] . '</td>';
-               echo '<td>'. $row['stkserie'] . '</td>';
-               echo '<td>'. $row['stkplan'] . '</td>';               
-					echo '</tr> ';
+    			<?php
+    				include '../database.php';
+    				$pdo = Database::connect();
+    				$sql = 'SELECT * FROM stock WHERE stkasignacion NOT IN ("BAJA","STOCK") ORDER BY stkasignacion';
+					foreach ($pdo->query($sql) as $row) {
+               	echo '<tr>';
+               	echo '<td>'. $row['stkasignacion'] . '</td>';
+               	echo '<td>'. $row['stktipo'] . '</td>';
+               	echo '<td>'. $row['stkmarca'] . '</td>';
+               	echo '<td>'. $row['stkmodelo'] . '</td>';
+               	echo '<td>'. $row['stkserie'] . '</td>';
+               	echo '<td>'. $row['stkplan'] . '</td>';               
+						echo '</tr> ';
                }
-            Database::disconnect();
-         ?>
+            	Database::disconnect();
+         	?>
          </tbody>
 		</table>
 		<br>
-		<a href="menuStock.php">Volver</a>
+		<div class="volver">
+			<a href="menuStock.php">Volver</a>
+		</div>
     </div>
 </body>
 </html>

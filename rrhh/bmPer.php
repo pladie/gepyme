@@ -7,7 +7,7 @@
 <body class="body">
     <div align="center">
             <div class="row">
-                <h3>Modificaion de Personas</h3>
+            	<p class="title"><strong>Modificaion de Personas</strong>
             </div>
             <div class="row">
                 <table class="table">
@@ -47,6 +47,10 @@
                   </tbody>
             </table>
         </div>
+        <br>
+   <div class="volver">
+		<a href="./menuRRHH.php" target="content">Volver</a>
+	</div>
     </div> <!-- /container -->
   </body>
 </html>

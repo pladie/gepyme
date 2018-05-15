@@ -4,15 +4,15 @@
     if ( !empty($_POST)) {
         // keep track validation errors
         $nombre = null;
-        $dni = null;
+        $dni    = null;
         $estado = null;
-        $fecha = null;
+        $fecha  = null;
          
         // keep track post values
         $nombre = $_POST['nombre'];
-        $dni = $_POST['dni'];
-	$estado = $_POST['estado'];
-        $fecha = $_POST['fecha'];
+        $dni    = $_POST['dni'];
+		  $estado = $_POST['estado'];
+        $fecha  = $_POST['fecha'];
          
         // validate input
         $valid = true;
@@ -44,13 +44,13 @@
  
 <body class="body">
     <div align="center">
-        <h3>Alta de Persona</h3>
+        <p class="title"><strong>Alta de Persona</strong>
         <form class="form-horizontal" action="altaPer.php" method="post">
-        		<table class="table" >
-						<tr align="left"><th>Nombre :</th><th><input name="nombre" type="text" placeholder="Nombre" value="<?php echo !empty($nombre)?$nombre:'';?>"></th></tr>             
-             		<tr align="left"><th>DNI :</th>   <th><input name="dni"    type="text" placeholder="DNI"    value="<?php echo !empty($dni)?$dni:'';?>">      </th></tr>
-		            <tr align="left"><th>Estado :</th><th><input name="estado" type="text" placeholder="Estado" value="<?php echo !empty($estado)?$estado:'';?>"></th></tr>
-		            <tr align="left"><th>Fecha :</th><th><input name="fecha" type="date" placeholder="fecha" value="<?php echo !empty($fecha)?$fecha:'';?>"></th></tr>
+        		<table class="table">
+						<tr><th>Nombre :</th><th><input name="nombre" type="text" placeholder="Nombre" value="<?php echo !empty($nombre)?$nombre:'';?>"></th></tr>             
+             		<tr><th>DNI :</th>   <th><input name="dni"    type="text" placeholder="DNI"    value="<?php echo !empty($dni)?$dni:'';?>">      </th></tr>
+		            <tr><th>Estado :</th><th><input name="estado" type="text" placeholder="Estado" value="<?php echo !empty($estado)?$estado:'';?>"></th></tr>
+		            <tr><th>Fecha :</th><th><input  name="fecha"  type="date" placeholder="fecha"  value="<?php echo !empty($fecha)?$fecha:'';?>"></th></tr>
 		            <tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
             </table>
             <br>

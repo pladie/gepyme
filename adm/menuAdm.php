@@ -35,7 +35,6 @@
 	<div class="volver">
 		<a href="./indicFac.php" target="content">Indicador Proveedores</a>
 	</div>
-	
 </div>
 </body>	
 </html>
