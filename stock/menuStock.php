@@ -36,7 +36,7 @@
 					<tr><td class="titmod"><strong>Modems 3/4G</strong>
 					<ul class="ulint">
 						<li class="liint"><a target="content" href="./altaMdm.php">Alta de Modem</a></li>
-						<li class="liint"><a target="content" href="./bmMdm.php">Asig. desde stock/a></li>
+						<li class="liint"><a target="content" href="./bmMdm.php">Asig. desde stock</a></li>
 						<li class="liint"><a target="content" href="./reasigMdm.php">Reasignacion de Modem</a></li>
 					</ul>
 					</td></tr>

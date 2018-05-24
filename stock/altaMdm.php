@@ -54,9 +54,11 @@
 		            <tr align="left"><th>Serie :</th>     <th><input name="serie" type="text" placeholder="Serie"      value="<?php echo !empty($serie)?$serie:'';?>"></th></tr>
 		            <tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
             </table>
-            <br>
-            <a href="menuStock.php">Volver</a>
         </form>
+	<br>
+	<div class="volver">
+		<a href="./menuStock.php">Volver</a>
+	</div>
      </div>
   </body>
 </html>

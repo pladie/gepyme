@@ -46,7 +46,7 @@
  
 <body class="body">
     <div align="center">
-        <h3>Alta de Bien</h3>
+        <p class="title"><strong>Alta de Celular</strong>
         <form class="form-horizontal" action="altaCel.php" method="post">
         		<table class="table" >
 						<tr align="left"><th>Marca :</th>     <th><input name="marca" type="text" placeholder="Marca"      value="<?php echo !empty($marca)?$marca:'';?>"></th></tr>             
@@ -54,9 +54,11 @@
 		            <tr align="left"><th>Serie :</th>     <th><input name="serie" type="text" placeholder="Serie"      value="<?php echo !empty($serie)?$serie:'';?>"></th></tr>
 		            <tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
             </table>
-            <br>
-            <a href="menuStock.php">Volver</a>
         </form>
+        <br>
+	<div class="volver">
+		<a href="./menuStock.php">Volver</a>
+	</div>
      </div>
   </body>
 </html>

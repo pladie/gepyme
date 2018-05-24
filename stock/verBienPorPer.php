@@ -33,7 +33,7 @@
 		</table>
 		<br>
 		<div class="volver">
-			<a href="menuStock.php">Volver</a>
+			<a href="menuStock.php" target="content">Volver</a>
 		</div>
     </div>
 </body>

@@ -7,7 +7,7 @@
 <body class="body">
    <div align="center">
       <p class="title"><strong>Modificaion de Proveedore</strong></p>
-         <table class="table">
+         <table class="tableli">
             <thead>
                <tr>
                   <th>Proveedor</th><th>Estado</th><th>Detalle</th><th>Editar</th><th>Borrar</th>

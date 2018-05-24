@@ -44,7 +44,7 @@
 	<link href="../css/gepyme.css" rel="stylesheet" type="text/css">
 </head>
  
-<body>
+<body class="body">
 	<div align="center">
 		<p class="title"><strong>Alta de Factura</strong></p>
 		<form class="form-horizontal" action="altaFac.php" method="post">

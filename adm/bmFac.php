@@ -7,7 +7,7 @@
 <body class="body">
 	<div align="center">
 		<p class="title"><strong>Modificaion de Facturas</strong></p>
-      <table class="tabla">
+      <table class="tableli">
       	<thead><tr>
             <th>Factura</th><th>Fecha</th><th>Proveedor</th><th>Importe</th><th>Ev. Admin.</th><th>Ev. Prod./Serv.</th><th>Detalle</th><th>Editar</th><th>Borrar</th>
          </tr></thead>

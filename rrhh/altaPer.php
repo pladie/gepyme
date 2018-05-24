@@ -43,19 +43,21 @@
 </head>
  
 <body class="body">
-    <div align="center">
-        <p class="title"><strong>Alta de Persona</strong>
-        <form class="form-horizontal" action="altaPer.php" method="post">
-        		<table class="table">
-						<tr><th>Nombre :</th><th><input name="nombre" type="text" placeholder="Nombre" value="<?php echo !empty($nombre)?$nombre:'';?>"></th></tr>             
-             		<tr><th>DNI :</th>   <th><input name="dni"    type="text" placeholder="DNI"    value="<?php echo !empty($dni)?$dni:'';?>">      </th></tr>
-		            <tr><th>Estado :</th><th><input name="estado" type="text" placeholder="Estado" value="<?php echo !empty($estado)?$estado:'';?>"></th></tr>
-		            <tr><th>Fecha :</th><th><input  name="fecha"  type="date" placeholder="fecha"  value="<?php echo !empty($fecha)?$fecha:'';?>"></th></tr>
-		            <tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
-            </table>
-            <br>
-            <a href="menuRRHH.php">Volver</a>
-        </form>
-     </div>
-  </body>
+	<div align="center">
+		<p class="title"><strong>Alta de Persona</strong>
+		<form class="form-horizontal" action="altaPer.php" method="post">
+			<table class="table">
+				<tr><th>Nombre :</th><th><input name="nombre" type="text" placeholder="Nombre" value="<?php echo !empty($nombre)?$nombre:'';?>"></th></tr>
+				<tr><th>DNI :</th>   <th><input name="dni"    type="text" placeholder="DNI"    value="<?php echo !empty($dni)?$dni:'';?>"></th></tr>
+				<tr><th>Estado :</th><th><input name="estado" type="text" placeholder="Estado" value="<?php echo !empty($estado)?$estado:'';?>"></th></tr>
+				<tr><th>Fecha :</th><th><input  name="fecha"  type="date" placeholder="fecha"  value="<?php echo !empty($fecha)?$fecha:'';?>"></th></tr>
+				<tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
+			</table>
+		</form>
+		<br>
+      	<div class="volver">
+				<a href="./bmPer.php" target="content">Volver</a>
+			</div>
+		</div>
+	</body>
 </html>

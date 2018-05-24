@@ -66,8 +66,8 @@ require '../database.php';
 	</form>
 </div>
 <br>
-   <div class="volver">
-		<a href="./bmPer.php" target="content">Volver</a>
-	</div>
+<div class="volver">
+	<a href="./bmPer.php" target="content">Volver</a>
+</div>
 </body>
 </html>
