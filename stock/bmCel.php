@@ -7,7 +7,7 @@
 <body class="body">
     <div align="center">
             <div class="row">
-                <h3>Modificaion de Bienes</h3>
+                <h3>Modificaion de Celulares</h3>
             </div>
             <div class="row">  
                 <table class="table">
