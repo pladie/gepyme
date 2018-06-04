@@ -6,13 +6,11 @@
 </head>
 <body class="body">
     <div align="center">
+            <p class="title"><strong>Reasignacion de Celular</h3></strong>
             <div class="row">
-                <h3>Reasignacion de Celular</h3>
-            </div>
-            <div class="row">
-                <table class="table">
+                <table class="tableli">
                   <thead>
-                    <tr>
+                    <tr>	
                       <th>Marca</th><th>Modelo</th><th>Serie</th><th>Asignacion</th><th>Detalle</th><th>Editar</th><th>Comprobante</th>
                     </tr>
                   </thead>
@@ -20,7 +18,7 @@
                   <?php
                    include '../database.php';
                    $pdo = Database::connect();
-                   $sql = 'SELECT * FROM stock WHERE stktipo = "Celular" and stkasignacion NOT IN ("STOCK","BAJA") ORDER BY stkmarca,stkmodelo';      
+                   $sql = 'SELECT * FROM stock WHERE stktipo = "Celular" and stkasignacion NOT IN ("STOCK","BAJA") ORDER BY stkmarca,stkmodelo,stkasignacion';      
                    foreach ($pdo->query($sql) as $row) {
                             echo '<tr>';
                             echo '<td>'. $row['stkmarca'] . '</td>';

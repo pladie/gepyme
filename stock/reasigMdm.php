@@ -6,11 +6,9 @@
 </head>
 <body class="body">
     <div align="center">
+            <p class="title"><strong>Reasignacion de Modem<//strong>
             <div class="row">
-                <h3>Reasignacion de Modem</h3>
-            </div>
-            <div class="row">
-                <table class="table">
+                <table class="tableli">
                   <thead>
                     <tr>
                       <th>Marca</th><th>Modelo</th><th>Serie</th><th>Asignacion</th><th>Detalle</th><th>Editar</th><th>Comprobante</th>
