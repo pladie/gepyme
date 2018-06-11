@@ -41,11 +41,12 @@
 <div align="center">
 	<a href="http://www.debian.org/"> <img src="./img/debian.png"   width="47" height="17" alt=""></a>
 	<a href="http://www.mariadb.org/"><img src="./img/mariadb.png"  width="47" height="12" alt=""></a>
-	<a href="http://www.php.org/en/"> <img src="./img/php.png"      width="47" height="25" alt=""></a>
 	<a href="http://www.w3c.org">     <img src="./img/html5.png"    width="30" height="25" alt=""></a>
 	<a href="http://www.w3c.org">     <img src="./img/js.png"       width="30" height="25" alt=""></a>
 	<a href="http://www.w3c.org">     <img src="./img/css3.png"     width="30" height="25" alt=""></a>
 	<a href="http://www.fpdf.org">    <img src="./img/fpdfLogo.png" width="47" height="25" alt=""></a>
+	<a href="http://www.php.org/en/"> <img src="./img/php.png"      width="47" height="25" alt=""></a>
+	<a href="http://www.fpdf.org">    <img src="./img/sqlite370_banner.gif" width="55" height="25" alt=""></a>
 	<p class="footer">&copy;Tatu S.I. 2016-2018
 </div>
 </body>

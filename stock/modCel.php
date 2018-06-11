@@ -16,6 +16,7 @@
         $id		= $_POST['id'];
         $marca = $_POST['marca'];
         $mod   = $_POST['mod'];
+        $est   = $_POST['est'];
         $serie = $_POST['serie'];
         $asig  = $_POST['asig'];
          
@@ -46,9 +47,9 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stkserie = ?, stkasignacion = ? WHERE stkid = ?";
+            $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stkserie = ?, stkasignacion = ?, stkestado = ? WHERE stkid = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($marca,$mod,$serie,$asig,$id));
+            $q->execute(array($marca,$mod,$serie,$asig,$est,$id));
             Database::disconnect();
             header("Location: bmCel.php");
         }
@@ -62,6 +63,7 @@
         $marca = $data['stkmarca'];
         $mod   = $data['stkmodelo'];
         $serie = $data['stkserie'];
+        $est	= $data['stkestado'];
         $asig  = $data['stkasignacion'];
         Database::disconnect();
     }
@@ -84,11 +86,17 @@
 				<tr align="left"><th>Serie:</th> <th><input type="text" id="serie" name="serie" tabindex="3" value="<?php echo $serie; ?>"></th></tr>
             <?php
 					$pdo = Database::connect();
-					$sql = "SELECT pernombre FROM personas WHERE perestado = 'Empleado' ORDER BY pernombre;";
+					$sql1 = "SELECT estnombre FROM estados ORDER BY estnombre;";
+					echo '<tr align="left"><th>Estado:</th><th><select name="asig">';
+					foreach ($pdo->query($sql1) as $row) {
+						echo '<option value="'. $row['estnombre'] . '">'. $row['estnombre'] . '</option>';
+					} 
+					$sql2 = "SELECT pernombre FROM personas WHERE perestado NOT IN ('Baja') ORDER BY pernombre;";
 					echo '<tr align="left"><th>Asignacion:</th><th><select name="asig">';
-					foreach ($pdo->query($sql) as $row) {
+					foreach ($pdo->query($sql2) as $row) {
 						echo '<option value="'. $row['pernombre'] . '">'. $row['pernombre'] . '</option>';
 					} 
+					Database::disconnect();
 				?>
 				<tr><th colspan="2"><input type="submit" value="Actualizar" ></th></tr>
 			</table>

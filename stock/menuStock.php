@@ -92,7 +92,8 @@
 	</table>
 	<br>
 	<div class="volver">
-		<a href="./verBienPorPer.php">Listado de Bienes por Persona</a>
+		<a href="./verBienPorPer.php">Listado de Bienes por Persona</a><br>
+		<a href="./verBienEnStock.php">Listado de Bienes en Stock</a>
 	</div>
 </div>
 </body>	
