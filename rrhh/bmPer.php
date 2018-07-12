@@ -13,7 +13,7 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th>Nombre</th><th>DNI</th><th>Estado</th><th>Fecha Alta</th><th>Fecha Baja</th><th>Detalle</th><th>Editar</th><th>Borrar</th>
+                      <th>Nombre</th><th>DNI</th><th>Estado</th><th>Proyecto</th><th>Fecha Alta</th><th>Fecha Baja</th><th>Detalle</th><th>Editar</th><th>Borrar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -26,6 +26,7 @@
                             echo '<td>'. $row['pernombre'] . '</td>';
                             echo '<td>'. $row['perdni'] . '</td>';
                             echo '<td>'. $row['perestado'] . '</td>';
+                            echo '<td>'. $row['perasig'] . '</td>';
                             echo '<td>'. $row['perfecalta'] . '</td>';
                             echo '<td>'. $row['perfecbaja'] . '</td>';
                             echo '<td align="center">';

@@ -7,12 +7,14 @@
         $dni    = null;
         $estado = null;
         $fecha  = null;
+        $asig	 = null;
          
         // keep track post values
         $nombre = $_POST['nombre'];
         $dni    = $_POST['dni'];
 		  $estado = $_POST['estado'];
         $fecha  = $_POST['fecha'];
+        $asig	 = $_POST['asignacion'];
          
         // validate input
         $valid = true;
@@ -26,9 +28,9 @@
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-            $sql = "INSERT INTO personas (pernombre,perdni,perestado,perfecalta) values(?, ?, ?, ?)";
+            $sql = "INSERT INTO personas (pernombre,perdni,perestado,perfecalta,perasig) values(?, ?, ?, ? ,?)";
             $q = $pdo->prepare($sql);
-            $q->execute(array($nombre,$dni,$estado,$fecha));
+            $q->execute(array($nombre,$dni,$estado,$fecha,$asig));
             
             Database::disconnect();
             header("Location: bmPer.php");
@@ -47,10 +49,11 @@
 		<p class="title"><strong>Alta de Persona</strong>
 		<form class="form-horizontal" action="altaPer.php" method="post">
 			<table class="table">
-				<tr><th>Nombre :</th><th><input name="nombre" type="text" placeholder="Nombre" value="<?php echo !empty($nombre)?$nombre:'';?>"></th></tr>
-				<tr><th>DNI :</th>   <th><input name="dni"    type="text" placeholder="DNI"    value="<?php echo !empty($dni)?$dni:'';?>"></th></tr>
-				<tr><th>Estado :</th><th><input name="estado" type="text" placeholder="Estado" value="<?php echo !empty($estado)?$estado:'';?>"></th></tr>
-				<tr><th>Fecha :</th><th><input  name="fecha"  type="date" placeholder="fecha"  value="<?php echo !empty($fecha)?$fecha:'';?>"></th></tr>
+				<tr><th>Nombre :</th> <th><input name="nombre" type="text" placeholder="Nombre" value="<?php echo !empty($nombre)?$nombre:'';?>"></th></tr>
+				<tr><th>DNI :</th>    <th><input name="dni"    type="text" placeholder="DNI"    value="<?php echo !empty($dni)?$dni:'';?>"></th></tr>
+				<tr><th>Estado :</th> <th><input name="estado" type="text" placeholder="Estado" value="<?php echo !empty($estado)?$estado:'';?>"></th></tr>
+				<tr><th>Fecha :</th>  <th><input name="fecha"  type="date" placeholder="fecha"  value="<?php echo !empty($fecha)?$fecha:'';?>"></th></tr>
+				<tr><th>Pryecto :</th><th><input name="asig"   type="text" placeholder="asig"   value="<?php echo !empty($asig)?$asig:'';?>"></th></tr>
 				<tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
 			</table>
 		</form>

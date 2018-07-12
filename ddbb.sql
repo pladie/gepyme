@@ -64,3 +64,8 @@ CREATE TABLE `proveedores` (
   `provestado` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`provid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+----------------
+
+ALTER TABLE `personas` 
+ADD COLUMN `perasig` VARCHAR(45) NULL AFTER `pertipo`;

@@ -17,6 +17,12 @@ Esta aplicacion esta probada con:
 
 * FPDF181
 
+**Version 2.1.1**
+
+1. Se agrega logo de SQLite
+
+2. Se agrega campo proyecto a la tabla personas y al ABM de RRHH.
+
 **Version 2.0.2**
 
 1. Se agrega modulo de mantenimiento de proveedores (ABM).

@@ -17,14 +17,15 @@ require '../database.php';
     	$estado  = $_POST['estado'];
     	$fecalta = $_POST['fecalta'];
     	$fecbaja = $_POST['fecbaja'];
+    	$asig		= $_POST['asig'];
     	$valid   = true;
       
       if ($valid) {
       	$pdo = Database::connect();
          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-         $sql = "UPDATE personas set pernombre = ?, perdni = ?, perestado = ?, perfecalta = ?, perfecbaja = ? WHERE perid = ?";
+         $sql = "UPDATE personas set pernombre = ?, perdni = ?, perestado = ?, perasig = ?, perfecalta = ?, perfecbaja = ? WHERE perid = ?";
          $q = $pdo->prepare($sql);
-         $q->execute(array($nom,$dni,$estado,$fecalta,$fecbaja,$id));
+         $q->execute(array($nom,$dni,$estado,$asig,$fecalta,$fecbaja,$id));
          Database::disconnect();
          header("Location: bmPer.php");
       }
@@ -38,6 +39,7 @@ require '../database.php';
         $nom	  = $data['pernombre'];
         $dni	  = $data['perdni'];
         $estado  = $data['perestado'];
+        $asig    = $data['perasig'];
         $fecalta = $data['perfecalta'];
         $fecbaja = $data['perfecbaja'];
         Database::disconnect();
@@ -56,11 +58,12 @@ require '../database.php';
 	<form action="modPer.php" method="post">
 	<input type="hidden" name="id" value="<?php echo $id; ?>">
 		<table class="table" >
-			<tr><th>Nombre :</th><th><input type="text" id="nom"     name="nom"     tabindex="1" value="<?php echo $nom; ?>"></th></tr>
-			<tr><th>DNI    :</th><th><input type="text" id="dni"     name="dni"     tabindex="2" value="<?php echo $dni; ?>"></th></tr>
-			<tr><th>Estado :</th><th><input type="text" id="estado"  name="estado"  tabindex="3" value="<?php echo $estado; ?>"></th></tr>
-			<tr><th>Alta   :</th><th><input type="date" id="fecalta" name="fecalta" tabindex="4" value="<?php echo $fecalta; ?>"></th></tr>
-			<tr><th>Baja   :</th><th><input type="date" id="fecbaja" name="fecbaja" tabindex="5" value="<?php echo $fecbaja; ?>"></th></tr>
+			<tr><th>Nombre   :</th><th><input type="text" id="nom"     name="nom"     tabindex="1" value="<?php echo $nom; ?>"></th></tr>
+			<tr><th>DNI      :</th><th><input type="text" id="dni"     name="dni"     tabindex="2" value="<?php echo $dni; ?>"></th></tr>
+			<tr><th>Estado   :</th><th><input type="text" id="estado"  name="estado"  tabindex="3" value="<?php echo $estado; ?>"></th></tr>
+			<tr><th>Proyecto :</th><th><input type="text" id="asig"    name="asig"    tabindex="4" value="<?php echo $asig; ?>"></th></tr>			
+			<tr><th>Alta     :</th><th><input type="date" id="fecalta" name="fecalta" tabindex="5" value="<?php echo $fecalta; ?>"></th></tr>
+			<tr><th>Baja     :</th><th><input type="date" id="fecbaja" name="fecbaja" tabindex="6" value="<?php echo $fecbaja; ?>"></th></tr>
 			<tr><th colspan="2"><input type="submit" value="Actualizar" ></th></tr>
 		</table>
 	</form>
