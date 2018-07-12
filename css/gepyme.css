@@ -53,13 +53,12 @@ ul {
 }
 
 table {
-	align-self: center;
-	border-width: 1px 1px 1px 1px;
+	align-self: none;
 	border-style: none;
 	border-color: black;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	background-color: lightgray;
-	text-align: center;
+	text-align: none;
 }
 
 .table {
@@ -82,9 +81,9 @@ table {
 	text-align: center;
 }
 
-.tableli td, th {
+.tableli td {
     border: 1px solid #fff;
-    padding: 8px;
+    padding: 4px;
 }
 
 .tableli tr:nth-child(even){background-color: #f2f2f2;}
@@ -92,11 +91,12 @@ table {
 .tableli tr:hover {background-color: #ddd;}
 
 .tableli th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: lightgray;
-    color: black;
+	text-align: center;
+   padding-top: 3px;
+   padding-bottom: 3px;
+   text-align: left;
+   background-color: lightgray;
+   color: black;
 }
 
 .liint a{
@@ -109,7 +109,11 @@ table {
 }
 
 td, th {
-    border: 0px;
-    text-align: center;
-    padding: 8px;
+	border: 0px;
+   text-align: center;
+   padding: 4px;
+}
+
+.form-horizontal {
+	align-items: center;t
 }
