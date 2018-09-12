@@ -6,25 +6,25 @@
 </head>
 <body class="body">
 <div align="center">
-	<p class="title"><strong>Administracion</strong></p>
+	<p class="title"><strong>Administraci&oacuten</strong></p>
 	<table>
 		<tr align="center">
 			<td>
 				<table class="table">
 					<tr><td class="titmod"><strong>Facturas</strong>
 					<ul class="ulint">
-						<li class="liint"><a target="content" href="./altaFac.php">Alta de Facturas</a></li>
-						<li class="liint"><a target="content" href="./bmFac.php">Modificacion de Facturas</a></li>
+						<li class="liint"><a target="content" href="./altaFac.php">Ingreso de Facturas</a></li>
+						<li class="liint"><a target="content" href="./bmFac.php">Modificaci&oacuten de Facturas</a></li>
 					</ul>
 					</td></tr>
 				</table>
 			</td>
 			<td>
 				<table class="table">
-					<tr><td class="titmod"><strong>Proveedores</strong>
+					<tr><td class="titmod"><strong>Proveedores c/Factura</strong>
 					<ul class="ulint">
 						<li class="liint"><a target="content" href="./altaProv.php">Alta de Proveedor</a></li>
-						<li class="liint"><a target="content" href="./bmProv.php">Modificacion de Proveedor</a></li>
+						<li class="liint"><a target="content" href="./bmProv.php">Modificaci&oacuten de Proveedor</a></li>
 					</ul>
 					</td></tr>
 				</table>
@@ -33,7 +33,11 @@
 	</table>
 	<br>
 	<div class="volver">
-		<a href="./indicFac.php" target="content">Indicador Proveedores</a>
+		<a href="./cargaEvOpen.php" target="content">Calificai&oacuten proveedores Open Source</a>
+		<br><br>
+		<a href="./indicFac.php" target="content">Evoluci&oacuten de Proveedores c/Factura</a>
+		<br>
+		<a href="./indicSinFac.php" target="content">Evoluci&oacuten de Proveedores s/Factura</a>		
 	</div>
 </div>
 </body>	

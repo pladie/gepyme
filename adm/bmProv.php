@@ -5,8 +5,11 @@
 	<link href="../css/gepyme.css" rel="stylesheet" type="text/css">
 </head>
 <body class="body">
+	<div align="left" class="volver">
+		<a href="./menuAdm.php" target="content" align="left">Volver</a>
+	</div>
    <div align="center">
-      <p class="title"><strong>Modificaion de Proveedore</strong></p>
+      <p class="title"><strong>Modificaion de Proveedores</strong></p>
          <table class="tableli">
             <thead>
                <tr>
@@ -17,7 +20,7 @@
             <?php
 	            include '../database.php';
                $pdo = Database::connect();
-               $sql = 'SELECT * FROM proveedores WHERE provestado != "BAJA" ORDER BY provnombre';      
+               $sql = "SELECT * FROM proveedores WHERE provestado != 'BAJA' ORDER BY provnombre";      
                foreach ($pdo->query($sql) as $row) {
                   echo '<tr>';
                   echo '<td>'. $row['provnombre'] . '</td>';
@@ -40,10 +43,6 @@
              ?>
          </tbody>
        </table>
-       <br>	
-       <div class="volver">
-			<a href="./menuAdm.php" target="content">Volver</a>
-		 </div>
     </div>
   </body>
 </html>

@@ -5,12 +5,12 @@
 	<link href="../css/gepyme.css" rel="stylesheet" type="text/css">
 </head>
 <body class="body">
-    <div align="center">
-            <div class="row">
-                <h3>Modificaion de Bienes</h3>
-            </div>
-            <div class="row">
-                <table class="table">
+	<div align="left" class="volver">
+   	<a href="menuStock.php">Volver</a>
+	</div>
+	<div align="center">
+		<p class="title"><strong>Modificaion de Notebooks</strong></p>
+     	<table class="tableli">
                   <thead>
                     <tr>
                       <th>Marca</th><th>Modelo</th><th>Serie</th><th>Asignacion</th><th>Detalle</th><th>Asignar</th>
@@ -42,6 +42,5 @@
                   </tbody>
             </table>
         </div>
-    </div> <!-- /container -->
   </body>
 </html>

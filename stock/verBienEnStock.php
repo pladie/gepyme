@@ -6,6 +6,9 @@
 </head>
  
 <body class="body">
+<div align="left" class="volver">
+   	<a href="menuStock.php">Volver</a>
+	</div>
    <div align="center">
    	<p class="title"><strong>Listado de Bienes en Stock</strong>
     	<table class="tableli">
@@ -30,10 +33,6 @@
          	?>
          </tbody>
 		</table>
-		<br>
-		<div class="volver">
-			<a href="menuStock.php" target="content">Volver</a>
-		</div>
     </div>
 </body>
 </html>

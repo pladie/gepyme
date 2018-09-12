@@ -14,6 +14,9 @@ ADD UNIQUE INDEX `stkserie_UNIQUE` (`stkserie` ASC);
 ALTER TABLE `personas`
 CHANGE COLUMN `perfecbaja` `perfecbaja` VARCHAR(10);
 
+ALTER TABLE `personas` 
+ADD COLUMN `perasig` VARCHAR(45) NULL AFTER `pertipo`;
+
 -- Version 1.0.0
 CREATE TABLE `log` (
   `logid` int(11) NOT NULL AUTO_INCREMENT,
@@ -67,5 +70,4 @@ CREATE TABLE `proveedores` (
 
 ----------------
 
-ALTER TABLE `personas` 
-ADD COLUMN `perasig` VARCHAR(45) NULL AFTER `pertipo`;
+

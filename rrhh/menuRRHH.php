@@ -6,21 +6,27 @@
 </head>
 <body class="body">
 <div align="center">
-	<h3>Gestion de Recursos Humanos</h3>
-<table>
-		<tr>
-<!--			<td>
+	<p class="title"><strong>Gestion de Recursos Humanos</strong></p>
+	<table>
+		<tr align="center">
+			<td>
 				<table class="table">
-					<tr><td><strong>Entrevistas</strong></td></tr>
-					<tr><td><a target="content" href="./menuEnt.php">Entrevistas</a></td></tr>
-					<tr><td><br></td></tr>
+					<tr><td class="titmod"><strong>Entrevistas</strong>
+					<ul class="ulint">
+						<li class="liint"><a target="content" href="./menuEnt.php">Alta de Entrevista</a></li>
+						<li class="liint"><a target="content" href="#">Modificaion de Entrevistas</a></li>
+					</ul>
+					</td></tr>
 				</table>
 			</td>
-			<td>	-->
+			<td>
 				<table class="table">
-					<tr><td><strong>Personas</strong></td></tr>
-					<tr><td><a target="content" href="./altaPer.php">Alta de Persona</a></td></tr>
-					<tr><td><a target="content" href="./bmPer.php">Modificacion de Persona</a></td></tr>
+					<tr><td class="titmod"><strong>Personas</strong>
+					<ul class="ulint">
+						<li class="liint"><a target="content" href="./altaPer.php">Alta de Persona</a></li>
+						<li class="liint"><a target="content" href="./bmPer.php">Modificacion de Persona</a></li>
+					</ul>
+					</td></tr>
 				</table>
 			</td>
 		</tr>

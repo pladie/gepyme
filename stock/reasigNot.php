@@ -5,6 +5,9 @@
 	<link href="../css/gepyme.css" rel="stylesheet" type="text/css">
 </head>
 <body class="body">
+<div align="left" class="volver">
+   	<a href="menuStock.php">Volver</a>
+	</div>
     <div align="center">
             <p class="title"><strong>Reasignacion de Notebook</strong>
             <div class="row">

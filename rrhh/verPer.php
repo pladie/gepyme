@@ -26,15 +26,17 @@
 </head>
  
 <body class="body">
-    <div align="center">
+   <div align="center">
     	<h3>Ver datos de Persona</h3>
      		<table class="table" >
               <tr align="left"><th>Nombre:</th><th><?php echo $data['pernombre'];?></th></tr>
-              <tr align="left"><th>DNI: </th><th><?php echo $data['perdni'];?></th></tr>
+              <tr align="left"><th>DNI:   </th><th><?php echo $data['perdni'];?></th></tr>
 				  <tr align="left"><th>Estado:</th><th><?php echo $data['perestado'];?></th></tr>
       </table>
-      <br>
-      <a href="bmPer.php">Volver</a>
-    </div>
+   </div>
+	<br>
+      <div class="volver">
+      	<a href="./bmPer.php" target="content">Volver</a>
+      </div>
   </body>
 </html>

@@ -26,6 +26,9 @@
 </head>
  
 <body class="body">
+<div align="left" class="volver">
+   	<a href="menuStock.php">Volver</a>
+	</div>
     <div align="center">
     	<h3>Ver detalle de un Bien</h3>
     	<table class="table">
@@ -34,8 +37,6 @@
 	    	<tr align="left"><th>Serie:</th><th><?php echo $data['stkserie'];?></th></tr>
 	    	<tr align="left"><th>Asignacion:</th><th><?php echo $data['stkasignacion'];?></th></tr>
 		</table>
-		<br>
-		<a href="menuStock.php">Volver</a>
     </div>
   </body>
 </html>

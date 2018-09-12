@@ -30,7 +30,7 @@
             
             $sql = "INSERT INTO log (logtrans,logserie,logitem) values(?, ?, ?)";
             $q = $pdo->prepare($sql);
-            $q->execute(array('ALTA->STOCK',$serie,'STOCK'));
+            $q->execute(array('ALTA->STOCK',$serie,'Notebook'));
                      
             Database::disconnect();
             header("Location: bmNot.php");
