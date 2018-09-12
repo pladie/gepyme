@@ -18,7 +18,7 @@
          	<?php
          		include '../database.php';
                $pdo = Database::connect();
-               $sql = 'SELECT * FROM stock WHERE stktipo = "Linea" and stkasignacion = "STOCK" ORDER BY stkserie';      
+               $sql = 'SELECT * FROM stock WHERE stktipo = "Linea" and stkasignacion = "STOCK" AND stkestado NOT IN ("BAJA") ORDER BY stkserie';      
                foreach ($pdo->query($sql) as $row) 
                {
                	echo '<tr>';
