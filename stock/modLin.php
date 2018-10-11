@@ -47,9 +47,9 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stkserie = ?, stkasignacion = ?, stkplan = ? WHERE stkid = ?";
+            $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stkserie = ?, stkasignacion = ?, stkplan = ?, stkestado = ? WHERE stkid = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($marca,$mod,$serie,$asig,$plan,$id));
+            $q->execute(array($marca,$mod,$serie,$asig,$plan,'ASIGNADO',$id));
             Database::disconnect();
             header("Location: bmLin.php");
         }

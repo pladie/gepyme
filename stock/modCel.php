@@ -49,7 +49,7 @@
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stkserie = ?, stkasignacion = ?, stkestado = ? WHERE stkid = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($marca,$mod,$serie,$asig,$est,$id));
+            $q->execute(array($marca,$mod,$serie,$asig,'ASIGNADO',$id));
             Database::disconnect();
             header("Location: bmCel.php");
         }
