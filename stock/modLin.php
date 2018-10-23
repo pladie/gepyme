@@ -50,6 +50,11 @@
             $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stkserie = ?, stkasignacion = ?, stkplan = ?, stkestado = ? WHERE stkid = ?";
             $q = $pdo->prepare($sql);
             $q->execute(array($marca,$mod,$serie,$asig,$plan,'ASIGNADO',$id));
+            
+            $sql = "INSERT INTO log (logtrans,logserie,logitem) values(?, ?, ?)";
+            $q = $pdo->prepare($sql);
+            $q->execute(array('CAMBIO',$serie,$stkasignacion . '|' . $stkestado));
+            
             Database::disconnect();
             header("Location: bmLin.php");
         }

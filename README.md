@@ -17,6 +17,14 @@ Esta aplicacion esta probada con:
 
 * FPDF181
 
+**Version 2.2.2**
+
+1. Se agrega logueo por modificacion de estado.
+
+2. Se separan los proveedores con factura de los open soruce.
+
+3. Se agrega calificacion de proveedores open source
+
 **Version 2.1.1**
 
 1. Se agrega logo de SQLite
