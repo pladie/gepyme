@@ -17,6 +17,13 @@ Esta aplicacion esta probada con:
 
 * FPDF181
 
+
+**Version 2.3.1**
+
+1. Se genera pantalla de validacion de ingreso al sistema.
+
+2. FIX-Alta de proveedores con tipo en NULL.
+
 **Version 2.2.2**
 
 1. Se agrega logueo por modificacion de estado.

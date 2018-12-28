@@ -1,11 +1,11 @@
 <?php
-	$today = date("YmdHMS");
-	$ver   = `sqlite3 -noheader system.sqlite3 "select valor from system where param='version'  and modulo='system';"`;
-	$rev   = `sqlite3 -noheader system.sqlite3 "select valor from system where param='revision' and modulo='system';"`;
-	$fix   = `sqlite3 -noheader system.sqlite3 "select valor from system where param='fix'      and modulo='system';"`;
-	$adm   = `sqlite3 -noheader system.sqlite3 "select valor from system where param='admin'    and modulo='system';"`;
-	$rrhh  = `sqlite3 -noheader system.sqlite3 "select valor from system where param='rrhh'     and modulo='system';"`;
-	$stock = `sqlite3 -noheader system.sqlite3 "select valor from system where param='stock'    and modulo='system';"`;
+	$ver     = `sqlite3 -noheader system.sqlite3 "select valor from system where param='version'  and modulo='system';"`;
+	$rev     = `sqlite3 -noheader system.sqlite3 "select valor from system where param='revision' and modulo='system';"`;
+	$fix     = `sqlite3 -noheader system.sqlite3 "select valor from system where param='fix'      and modulo='system';"`;
+	$adm     = `sqlite3 -noheader system.sqlite3 "select valor from system where param='admin'    and modulo='system';"`;
+	$rrhh    = `sqlite3 -noheader system.sqlite3 "select valor from system where param='rrhh'     and modulo='system';"`;
+	$stock   = `sqlite3 -noheader system.sqlite3 "select valor from system where param='stock'    and modulo='system';"`;
+	$tablero = `sqlite3 -noheader system.sqlite3 "select valor from system where param='tablero'  and modulo='system';"`;
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,6 +32,10 @@
 		<?php if(1==$stock){
 			echo '<li><a target="content" href="./stock/menuStock.php">Stock</a></li>';}
 			else {echo '<li><a target="content" href="./bienvenido.html" title="Modulo no habilitado">Stock</a></li>';}
+		?>
+		<?php if($tablero==1){
+			echo '<li><a target="content" href="./panel/menuPanel.php">Tablero de Control</a></li>';}
+			else {echo '<li><a target="content" href="./bienvenido.html" title="Modulo no habilitado">Tablero de Control</a></li>';}
 		?>
 	</ul>
 <br><br><br><br><br><br><br><br><br><br><br><br>
