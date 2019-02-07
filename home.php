@@ -1,13 +1,20 @@
-<?php
-// Initialize the session
+<!--<?php/*
+// Inicializo la sesion.
 session_start();
-
-// Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+ 
+// Si pudo loguearse, ingresa al sistema
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: index.php");
     exit;
 }
-?>
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
+    session_unset();     // limpio los datos de la sesion
+    session_destroy();   // borra los datos almacenados de la session.
+    exit;
+}
+$_SESSION['LAST_ACTIVITY'] = time(); // Actualizo la ultima actividad
+*/
+?>-->
 <!DOCTYPE HTML>
 <head>
 <head>

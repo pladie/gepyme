@@ -1,21 +1,8 @@
 -- MySQL dump 10.16  Distrib 10.2.13-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: 192.168.33.80    Database: XXX
+-- Host: localhost     Database: gepyme
 -- ------------------------------------------------------
 -- Server version       10.1.30-MariaDB-1~jessie
-
--- Cambios de 1.0.0 a 2.0.0
-
-ALTER TABLE `stock` 
-CHANGE COLUMN `stkserie` `stkserie` VARCHAR(100) NOT NULL ,
-CHANGE COLUMN `stkasignacion` `stkasignacion` VARCHAR(100) NOT NULL ,
-ADD UNIQUE INDEX `stkserie_UNIQUE` (`stkserie` ASC);
-
-ALTER TABLE `personas`
-CHANGE COLUMN `perfecbaja` `perfecbaja` VARCHAR(10);
-
-ALTER TABLE `personas` 
-ADD COLUMN `perasig` VARCHAR(45) NULL AFTER `pertipo`;
 
 -- Version 1.0.0
 CREATE TABLE `log` (
@@ -65,9 +52,33 @@ CREATE TABLE `proveedores` (
   `provid` int(11) NOT NULL AUTO_INCREMENT,
   `provnombre` varchar(45) DEFAULT NULL,
   `provestado` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`provid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`provid`)
 
-----------------
+-- --------------
+--
+-- Cambios de 1.0.0 a 2.0.0
+--
+ALTER TABLE `stock` 
+CHANGE COLUMN `stkserie` `stkserie` VARCHAR(100) NOT NULL ,
+CHANGE COLUMN `stkasignacion` `stkasignacion` VARCHAR(100) NOT NULL ,
+ADD UNIQUE INDEX `stkserie_UNIQUE` (`stkserie` ASC);
 
+ALTER TABLE `personas`
+CHANGE COLUMN `perfecbaja` `perfecbaja` VARCHAR(10);
 
+ALTER TABLE `personas` 
+ADD COLUMN `perasig` VARCHAR(45) NULL AFTER `pertipo`;
+
+CREATE TABLE usuarios (
+    usuId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    usuNombre VARCHAR(50) NOT NULL UNIQUE,
+    usuClave VARCHAR(255) NOT NULL,
+    usuAlta DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ---------------------
+-- Basic data
+-- user Admin, pass Admin ***PLEASE CHANGE***
+
+INSERT INTO `gepyme`.`usuarios` (`usuNombre`,`usuClave`,`usuAlta`) VALUES ('admin','$2y$10$iWZLTImZQXFE0pvZAPuRpOMNNPMAPGc.Mj2lEk/i7IkdXiL1KWqbK',CURRENT_TIMESTAMP);

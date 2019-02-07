@@ -21,7 +21,7 @@
 			</td>
 			<td>
 				<table class="table">
-					<tr><td class="titmod"><strong>Proveedores c/Factura</strong>
+					<tr><td class="titmod"><strong>Proveedores</strong>
 					<ul class="ulint">
 						<li class="liint"><a target="content" href="./altaProv.php">Alta de Proveedor</a></li>
 						<li class="liint"><a target="content" href="./bmProv.php">Modificaci&oacuten de Proveedor</a></li>

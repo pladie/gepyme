@@ -19,7 +19,7 @@
             $q->execute(array($nom,'Habilitado',$open));
             
             $trx= date("YmdHis");
-            $text= 'Alta-> ' . $nom . '| Habilitado ' . '|' . $protipo;
+            $text= 'Alta-> ' . $nom . '| Habilitado ' . '|' . $open;
             $sql = "INSERT INTO log (logserie,loglong) values(?, ?)";
             $q = $pdo->prepare($sql);
             $q->execute(array($trx,$text));
@@ -45,7 +45,13 @@
 		<form class="form-horizontal" action="altaProv.php" method="post">
 			<table class="table" >
 				<tr align="left"><th>Razon Social :</th>   <th><input name="nom" type="text" placeholder="Razon Social"   value="<?php echo !empty($nom)?$nom:'';?>"></th></tr>
-				<tr align="left"><th>Open Source :</th>   <th><input name="open" type="checkbox" placeholder="0"   value="1"></th></tr>
+				<tr align="left"><th>Open Source :</th>   <th><input type="checkbox" name="open" checked></th></tr>
+				<tr><th>Open Source  :</th>
+					<th><select name="open">
+							<option value="NO">NO</option>
+							<option value="SI">SI</option>
+						 </select></th>
+				</tr>				
 				<tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>       
          </table>
        </form>

@@ -49,7 +49,7 @@
 				<tr align="left"><th>Fec. Comp.:</th><th><input name="fec" type="date" placeholder="Fecha" value="<?php echo !empty($fec)?$fec:'';?>"> </th></tr>
             <?php
 					$pdo = Database::connect();
-					$sql = "SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 1 ORDER BY provnombre;";
+					$sql = "SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 'SI' ORDER BY provnombre;";
 					echo '<tr align="left"><th>Proveedor:</th><th><select name="prov">';
 					foreach ($pdo->query($sql) as $row) {
 						echo '<option value="'. $row['provnombre'] . '">'. $row['provnombre'] . '</option>';

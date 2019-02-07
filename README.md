@@ -17,6 +17,9 @@ Esta aplicacion esta probada con:
 
 * FPDF181
 
+**Version 2.3.2**
+
+1. Se genera un modulo panel de control.
 
 **Version 2.3.1**
 

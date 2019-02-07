@@ -17,9 +17,9 @@
     	$valid = true;
       
       if ($valid) {
-      	if($open = "checked") {
-      		$open = 1;
-      	}
+     // 	if($open = "checked") {
+     // 		$open = 1;
+     // 	}
       	$pdo = Database::connect();
          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
          $sql = "UPDATE proveedores set provnombre = ?, protipo = ? WHERE provid = ?";
@@ -29,7 +29,7 @@
          header("Location: bmProv.php");
 
         $trx= date("YmdHis");
-        $text= 'Alta-> ' . $nom . '| Habilitado ' . '|' . $protipo;
+        $text= 'Alta-> ' . $nom . '| Habilitado ' . '|' . $open;
         $sql = "INSERT INTO log (logserie,loglong) values(?, ?)";
         $q = $pdo->prepare($sql);
         $q->execute(array($trx,$text));
@@ -64,7 +64,12 @@
 	<input type="hidden" name="id" value="<?php echo $id; ?>">
 		<table align="center" class="tableli" >
 			<tr><th>Razon Social :</th><th><input type="text" id="nom"  name="nom" tabindex="1" value="<?php echo $nom; ?>"></th></tr>
-			<tr><th>Open Source  :</th><th><input type="checkbox" id="open"  name="open" tabindex="2" <?php if ($open) {echo 'checked';};?>></th></tr>
+			<tr><th>Open Source  :</th>
+				<th><select name="open">
+					<option value="NO">NO</option>
+					<option value="SI">SI</option>
+					</select>
+				</th></tr>			
 			<tr  ><th colspan="2" align="center"><input type="submit" value="Actualizar" ></th></tr>
 		</table>
 	</form>

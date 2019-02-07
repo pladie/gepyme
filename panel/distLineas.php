@@ -1,10 +1,29 @@
 <?php // content="text/plain; charset=utf-8"
 require_once ('../jpgraph/jpgraph.php');
 require_once ('../jpgraph/jpgraph_bar.php');
+include '../database.php';
+
+$pdo = Database::connect();
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$sqlPer = 'SELECT
+(SELECT count(*) FROM stock WHERE stktipo = "Linea" AND stkmarca = "Personal") AS qPerTot,
+(SELECT count(*) FROM stock WHERE stktipo = "Linea" AND stkestado = "ASIGNADO" AND stkmarca = "Personal") AS qPerAsig,
+(SELECT count(*) FROM stock WHERE stktipo = "Linea" AND stkestado = "SUSPENDIDA" AND stkmarca = "Personal") AS qPerSus';
+#$sqlPer = 'SELECT count(*) AS qPer FROM stock WHERE stktipo = ? AND stkestado <> ? AND stkmarca = ?';
+$q = $pdo->prepare($sqlPer);
+#$q->execute(array("Linea","BAJA","Personal"));
+$data  = $q->fetch(PDO::FETCH_ASSOC);
+$canPer = $data['qPer'];
+
+
+
+
+Database::disconnect();
 
 // ----------- Grafico de Disponibles vs. Asignadas
-$datay1=array(37,4);				//Asignados
-$datay2=array(13,2);				//Disponibles
+$datay1=array(37,$canPer);				//Asignados
+$datay2=array(10,2);				//Disponibles
 $datax1=array("Claro","Personal");
 
 // Create the graph.

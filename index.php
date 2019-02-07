@@ -1,125 +1,103 @@
-<?php
-// Initialize the session
+<!--<?php/*
+// Inicializo la sesion.
 session_start();
  
-// Check if the user is already logged in, if yes then redirect him to welcome page
+// Si pudo loguearse, ingresa al sistema
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: home.php");
     exit;
 }
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
+    session_unset();     // limpio los datos de la sesion
+    session_destroy();   // borra los datos almacenados de la session.
+    exit;
+}
+$_SESSION['LAST_ACTIVITY'] = time(); // Actualizo la ultima actividad
  
-// Include config file
+// Leo los parametros de conexion de la base de datos.
 require_once "database.php";
 $pdo = Database::connect();
  
-// Define variables and initialize with empty values
 $username = $password = "";
 $username_err = $password_err = "";
  
-// Processing form data when form is submitted
+// Proceso datos de ingreso
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Check if username is empty
+    // Valido los datos ingresados.
     if(empty(trim($_POST["username"]))){
         $username_err = "Por favor, ingrese su usuario.";
     } else{
         $username = trim($_POST["username"]);
     }
     
-    // Check if password is empty
     if(empty(trim($_POST["password"]))){
         $password_err = "Por favor, ingrese su clave.";
     } else{
         $password = trim($_POST["password"]);
     }
     
-    // Validate credentials
+    // Comparo los datos ingresados con los leidos de la base.
     if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
-        $sql = "SELECT id, username, password FROM users WHERE username = :username";
+        
+        $sql = "SELECT usuId,usuNombre, usuClave FROM usuarios WHERE usuNombre = :username";
         
         if($stmt = $pdo->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
-            
-            // Set parameters
             $param_username = trim($_POST["username"]);
             
-            // Attempt to execute the prepared statement
             if($stmt->execute()){
-                // Check if username exists, if yes then verify password
                 if($stmt->rowCount() == 1){
                     if($row = $stmt->fetch()){
                         $id = $row["id"];
-                        $username = $row["username"];
-                        $hashed_password = $row["password"];
+                        $username = $row["usuNombre"];
+                        $hashed_password = $row["usuClave"];
                         if(password_verify($password, $hashed_password)){
-                            // Password is correct, so start a new session
                             session_start();
                             
-                            // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
                             
-                            // Redirect user to welcome page
-                            header("location: home.php");
+                            header("location: sessionVariables.php");
                         } else{
-                            // Display an error message if password is not valid
                             $password_err = "La clave no es la correcta.";
                         }
                     }
                 } else{
-                    // Display an error message if username doesn't exist
-                    $username_err = "No account found with that username.";
+                    $username_err = "El usuario no existe.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Por favor intente nuevamente.";
             }
         }
-        
-        // Close statement
         unset($stmt);
     }
-    
-    // Close connection
     unset($pdo);
     $pdo = Database::disconnect();
 }
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>GePyME</title>
     <link href="./css/gepyme.css" rel="stylesheet" type="text/css">
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"> 
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>-->
 </head>
 <body>
-    <div>
+    <div align="center">
         <h2>Bienvenido a GePyME</h2>
-        <p>Por favor, valide sus datos para ingresar al sistema.</p>
+        <!--<p>Por favor, valide sus datos para ingresar al sistema.</p>-- >
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Usuario</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Clave</label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Ingresar">
-            </div>
-<!--            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>	-->
+        <table class="table" >
+        		<tr align="left"><th>Usuario :</th><th><input name="username" type="text" placeholder="Usuario" value="<?php echo $username; ?>"></th></tr>             
+           	<tr align="left"><th>Clave   :</th><th><input name="password"   type="password" placeholder="Clave"   value="<?php echo !empty($mod)?$mod:'';?>"></th></tr>
+		      <tr><th colspan="2"><input type="submit" value="Ingresar"></th></tr>
+        </table>
+
         </form>
     </div>
 </body>
-</html>
+</html>-->
+<?php header("location: home.php"); ?>
