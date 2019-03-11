@@ -24,7 +24,7 @@
                	echo '<tr>';
                   echo '<td>'. $row['stkmarca'] . '</td>';
                   echo '<td>'. $row['stkmodelo'] . '</td>';
-                  echo '<td>'. $row['stkserie'] . '</td>';
+                  echo '<td>'. $row['stknumero'] . '</td>';
                   echo '<td>'. $row['stkplan'] . '</td>';
                   echo '<td>'. $row['stkasignacion'] . '</td>';
                   echo '<td align="center">';

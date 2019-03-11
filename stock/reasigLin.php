@@ -14,7 +14,7 @@
                 <table class="tableli">
                   <thead>
                     <tr>
-                      <th>Marca</th><th>Modelo</th><th>Serie</th><th>Asignacion</th><th>Detalle</th><th>Editar</th><th>Comprobante</th>
+                      <th>Marca</th><th>Modelo</th><th>Numero</th><th>Asignacion</th><th>Detalle</th><th>Editar</th><th>Comprobante</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -26,17 +26,17 @@
                             echo '<tr>';
                             echo '<td>'. $row['stkmarca'] . '</td>';
                             echo '<td>'. $row['stkmodelo'] . '</td>';
-                            echo '<td>'. $row['stkserie'] . '</td>';
+                            echo '<td>'. $row['stknumero'] . '</td>';
                             echo '<td>'. $row['stkasignacion'] . '</td>';
                             echo '<td align="center">';
                             echo '<a href="verBien.php?id='.$row['stkid'].'">';
                             echo '<img alt="" src="../img/eye.png" width="15" height="15"></a>';
-        							 echo '</td> ';
-        							 echo '<td align="center">';
+             							  echo '</td> ';
+               							echo '<td align="center">';
                             echo '<a href="modLin.php?id='.$row['stkid'].'">';
                             echo '<img alt="" src="../img/pencil.png" width="15" height="15"></a>';
                             echo '</td> ';
-        							 echo '<td align="center">';
+        							      echo '<td align="center">';
                             echo '<a href="pdfBien.php?nombre='.$row['stkasignacion'].'&tipo='.$row['stktipo'].'&marca='.$row['stkmarca'].'&modelo='.$row['stkmodelo'].'&serie='.$row['stkserie'].'">';
                             echo '<img alt="" src="../img/document-2.png" width="15" height="15"></a>';
                             echo '</td>';
