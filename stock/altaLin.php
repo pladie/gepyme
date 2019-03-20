@@ -28,7 +28,7 @@
             
             $sql = "INSERT INTO stock (stkmarca,stkmodelo,stkserie,stkasignacion,stkestado,stktipo,stkplan) values(?, ?, ?, ?, ?, ?, ?)";
             $q = $pdo->prepare($sql);
-            $q->execute(array($marca,$mod,$serie,'STOCK','DISPONIBLE','Linea',$plan));
+            $q->execute(array($marca,$mod,$serie,'STOCK','ASIGNADO','Linea',$plan));
             
             $sql = "INSERT INTO log (logtrans,logserie,logitem) values(?, ?, ?)";
             $q = $pdo->prepare($sql);

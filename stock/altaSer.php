@@ -24,9 +24,9 @@
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-            $sql = "INSERT INTO stock (stkmarca,stkmodelo,stkserie,stkasignacion,stktipo) values(?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO stock (stkmarca,stkmodelo,stkserie,stkasignacion,stkestado,stktipo) values(?, ?, ?, ?, ?)";
             $q = $pdo->prepare($sql);
-            $q->execute(array($marca,$mod,$serie,'STOCK','Servidor'));
+            $q->execute(array($marca,$mod,$serie,'STOCK','ASIGNADO','Servidor'));
             
             $sql = "INSERT INTO log (logtrans,logserie,logitem) values(?, ?, ?)";
             $q = $pdo->prepare($sql);
