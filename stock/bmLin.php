@@ -12,7 +12,7 @@
 		<p class="title"><strong>Modificaion de Lineas</strong></p>
      	<table class="tableli">
      		<thead>
-         	<tr><th>Marca</th><th>Modelo</th><th>Numero</th><th>Plan</th><th>Asignacion</th><th>Detalle</th><th>Asignar</th></tr>
+         	<tr><th>Marca</th><th>Modelo</th><th>Numero</th><th>Nro. Serie</th><th>Plan</th><th>Asignacion</th><th>Proyecto</th><th>Detalle</th><th>Asignar</th></tr>
          </thead>
          <tbody>
          	<?php
@@ -25,8 +25,10 @@
                   echo '<td>'. $row['stkmarca'] . '</td>';
                   echo '<td>'. $row['stkmodelo'] . '</td>';
                   echo '<td>'. $row['stknumero'] . '</td>';
+                  echo '<td>'. $row['stkserie'] . '</td>';
                   echo '<td>'. $row['stkplan'] . '</td>';
                   echo '<td>'. $row['stkasignacion'] . '</td>';
+                  echo '<td>'. $row['stkproyecto'] . '</td>';
                   echo '<td align="center">';
                   echo '<a href="verBien.php?id='.$row['stkid'].'">';
                   echo '<img alt="" src="../img/eye.png" width="15" height="15"></a>';

@@ -48,7 +48,8 @@
 					<ul class="ulint">
 						<li class="liint"><a target="content" href="./altaTag.php">Alta de Medio</a></li>
 						<li class="liint"><a target="content" href="./bmTag.php">Asig. desde stock</a></li>
-						<li class="liint"><a target="content" href="./reasigTag.php">Reasignacion de Medio</a></li>
+						<li class="liint"><a target="content" href="./reasigTag
+						.php">Reasignacion de Medio</a></li>
 					</ul>
 					</td></tr>
 				</table>

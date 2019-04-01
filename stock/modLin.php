@@ -19,6 +19,8 @@
         $serie = $_POST['serie'];
         $plan  = $_POST['plan'];
         $asig  = $_POST['asig'];
+        $num   = $_POST['num'];
+        $proy  = $_POST['proy'];
          
         // validate input
         $valid = true;
@@ -47,9 +49,10 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stknumero = ?, stkasignacion = ?, stkplan = ?, stkestado = ? WHERE stkid = ?";
+            $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stknumero = ?, stkasignacion = ?, 
+                                      stkplan = ?, stkestado = ? , stkserie = ?, stkproyecto = ? WHERE stkid = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($marca,$mod,$serie,$asig,$plan,'ASIGNADO',$id));
+            $q->execute(array($marca,$mod,$num,$asig,$plan,'ASIGNADO',$serie,$proy,$id));
             
             $sql = "INSERT INTO log (logtrans,logserie,logitem) values(?, ?, ?)";
             $q = $pdo->prepare($sql);
@@ -67,9 +70,11 @@
         $data  = $q->fetch(PDO::FETCH_ASSOC);
         $marca = $data['stkmarca'];
         $mod   = $data['stkmodelo'];
-        $serie = $data['stknumero'];
+        $serie = $data['stkserie'];
         $plan  = $data['stkplan'];
         $asig  = $data['stkasignacion'];
+        $num  = $data['stknumero'];
+        $proy  = $data['stkproyecto'];
         Database::disconnect();
     }
 ?>
@@ -88,15 +93,18 @@
 			<table class="table" >		
 				<tr align="left"><th>Marca :</th> <th><input type="text" id="marca" name="marca" tabindex="1" value="<?php echo $marca; ?>"></th></tr>
 				<tr align="left"><th>Modelo :</th><th><input type="text" id="mod"   name="mod"   tabindex="2" value="<?php echo $mod; ?>"></th></tr>
-				<tr align="left"><th>Numero :</th> <th><input type="text" id="serie" name="serie" tabindex="3" value="<?php echo $serie; ?>"></th></tr>
+				<tr align="left"><th>Numero :</th> <th><input type="text" id="num" name="num" tabindex="3" value="<?php echo $num; ?>"></th></tr>
 				<tr align="left"><th>Plan :</th>  <th><input type="text" id="plan" name="plan" tabindex="3" value="<?php echo $plan; ?>"></th></tr>
+                <tr align="left"><th>Serie :</th>  <th><input type="text" id="serie" name="serie" tabindex="3" value="<?php echo $serie; ?>"></th></tr>
+                <tr align="left"><th>Proyecto :</th>  <th><input type="text" id="proy" name="proy" tabindex="3" value="<?php echo $proy; ?>"></th></tr>
             <?php
 					$pdo = Database::connect();
 					$sql = "SELECT pernombre FROM personas WHERE perestado = 'Empleado' ORDER BY pernombre;";
 					echo '<tr align="left"><th>Asignacion:</th><th><select name="asig">';
 					foreach ($pdo->query($sql) as $row) {
 						echo '<option value="'. $row['pernombre'] . '">'. $row['pernombre'] . '</option>';
-					} 
+                    } 
+                    Database::disconnect();
 				?>
 				<tr><th colspan="2"><input type="submit" value="Actualizar" ></th></tr>
 			</table>
