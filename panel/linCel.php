@@ -14,7 +14,7 @@ $sql = 'SELECT
 (SELECT count(*) FROM gepyme.stock WHERE stktipo = "Linea" and stkestado != "BAJA" and stkproyecto = "SMS") as sms,
 (SELECT count(*) FROM gepyme.stock WHERE stktipo = "Linea" and stkestado != "BAJA" and stkproyecto = "VOZ") as voz,
 (SELECT count(*) FROM gepyme.stock WHERE stktipo = "Linea" and stkestado != "BAJA" and stkproyecto = "SFE") as sfe,
-(SELECT count(*) FROM gepyme.stock WHERE stktipo = "Linea" and stkestado != "BAJA" and stkproyecto = "IMET") as sfe';
+(SELECT count(*) FROM gepyme.stock WHERE stktipo = "Linea" and stkestado != "BAJA" and stkproyecto = "INET") as ine';
 
 $q = $pdo->prepare($sql);
 $q->execute();
@@ -24,7 +24,7 @@ $ch2 = $data['ch2'];
 $sms = $data['sms'];
 $voz = $data['voz'];
 $sfe = $data['sfe'];
-$ine = $data['inet'];
+$ine = $data['ine'];
 
 Database::disconnect();
 
