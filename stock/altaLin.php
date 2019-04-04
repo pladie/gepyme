@@ -15,7 +15,7 @@
         $mod   = $_POST['mod'];
         $serie = $_POST['serie'];
         $plan  = $_POST['plan'];
-        $nro   = $_POST['numero'];
+        $nro   = $_POST['nro'];
         $proy  = $_POST['proy'];
          
         // validate input
@@ -73,8 +73,8 @@
 						<th><select name="plan">
 							<option value="BAM06">BEM06</option>
 							<option value="BAM21">BEM21</option>
-                            <option value="BAM21">BEM32</option>
-                            <option value="BAM21">BEM33</option>
+                            <option value="BAM32">BEM32</option>
+                            <option value="BAM33">BEM33</option>
 							<option value="PEM1C">PEM1C</option>
 							<option value="PEM2C">PEM2C</option>
 							<option value="PEM3C">PEM3C</option>

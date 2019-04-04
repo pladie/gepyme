@@ -16,9 +16,6 @@ $q = $pdo->prepare($sqlPer);
 $data  = $q->fetch(PDO::FETCH_ASSOC);
 $canPer = $data['qPer'];
 
-
-
-
 Database::disconnect();
 
 // ----------- Grafico de Disponibles vs. Asignadas
@@ -155,22 +152,6 @@ $graph->img->Stream($fileName);
 			</td>
 		</tr>
 	</table>
-<!--	<table>
-		<tr align="center">
-			<td>
-				<img src="../img/zSimcards.png" width="370" height="250" alt="">
-			</td>
-		</tr>
-	</table>
-	<table>
-		<tr>
-			<td>
-				<ul class="ulint">
-					<li class="liint"><a target="content" href="./distLineas.php">Distribucion de Lineas</a></li>
-				</ul>
-			</td>
-		</tr>
-	</table>-->
 </div>
 </body>	
 </html>

@@ -65,9 +65,9 @@ $pdo = Database::connect();
 
 //Busco datos por empresa
 $sql = 'SELECT
-(SELECT count(*) FROM gepyme.stock WHERE stkmarca = "Claro-ATX"  and stkestado != "BAJA") as Cla,
+(SELECT count(*) FROM gepyme.stock WHERE stkmarca = "Claro-ATX"       and stkestado != "BAJA") as Cla,
 (SELECT count(*) FROM gepyme.stock WHERE stkmarca = "Movistar-Lugalu" and stkestado != "BAJA") as Mov,
-(SELECT count(*) FROM gepyme.stock WHERE stkmarca = "Personal-Lugalu"   and stkestado != "BAJA") as Per';
+(SELECT count(*) FROM gepyme.stock WHERE stkmarca = "Personal-Lugalu" and stkestado != "BAJA") as Per';
 
 $q = $pdo->prepare($sql);
 $q->execute();
