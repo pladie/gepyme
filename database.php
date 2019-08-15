@@ -2,9 +2,9 @@
 class Database
 {
     private static $dbName         = 'gepyme' ;
-    private static $dbHost         = 'localhost' ;
+    private static $dbHost         = 'localhost';
     private static $dbUsername     = 'gepyme';
-    private static $dbUserPassword = 'gepyme.123';
+    private static $dbUserPassword = 'Gepyme.13';
      
     private static $cont  = null;
      

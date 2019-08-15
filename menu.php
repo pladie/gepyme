@@ -8,17 +8,17 @@
 	$rrhh    = `sqlite3 -noheader system.sqlite3 "select valor from system where param='rrhh'     and modulo='system';"`;
 	$stock   = `sqlite3 -noheader system.sqlite3 "select valor from system where param='stock'    and modulo='system';"`;
 	$tablero = `sqlite3 -noheader system.sqlite3 "select valor from system where param='tablero'  and modulo='system';"`;
-
+	
 	session_start(); 
 
 	if (!isset($_SESSION['username'])) {
 		$_SESSION['msg'] = "You must log in first";
-		header('location: login.php');
+		header('location: index.php');
 	}
 	if (isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['username']);
-		header("location: login.php");
+		header("location: index.php");
 	}
 
 	// Busco al usuario y sus privilegios para mostrar menu
@@ -36,6 +36,7 @@
 	$privrrhh = $data['privR'];
 	$privstock = $data['privS'];
 	$privpanel = $data['privP'];
+	$privsuper = $data['superuser'];
 
 	Database::disconnect();
 
@@ -77,6 +78,10 @@
 				 echo '<li><a target="content" href="./adm/repPanel.php" title="Reportes">Panel de control</a></li>';
 			else echo '<li><a target="content" href="./panel/menuPanel.php">Tablero de Control</a></li>';
 			}
+		?>
+		<?php if($privsuper >= 0)
+				 echo '<li><a target="content" href="./sisadmin/menuSisAdmin.php">Admin. del Sistema</a></li>';
+			else echo '<li><a target="content" href="./adm/repPanel.php" title="Reportes">Panel de control</a></li>';
 		?>
 	</ul>
 <br><br><br><br><br><br><br><br><br><br><br><br>
