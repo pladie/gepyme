@@ -101,7 +101,7 @@
 				</table>
 			</td>
 		</tr>
-		<tr align="center">>
+		<tr align="center">
 			<td>
 				<table class="table">
 					<tr><td class="titmod"><strong>Bienes de terceros</strong>
@@ -117,7 +117,8 @@
 	<br>
 	<div class="volver">
 		<a href="./verBienPorPer.php">Listado de Bienes por Persona</a><br>
-		<a href="./verBienEnStock.php">Listado de Bienes en Stock</a>
+		<a href="./verBienEnStock.php">Listado de Bienes en Stock</a><br><br>
+		<a href="./verBienExternos.php">Listado de Bienes de terceros</a>
 	</div>
 </div>
 </body>	
