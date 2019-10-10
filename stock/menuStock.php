@@ -101,6 +101,18 @@
 				</table>
 			</td>
 		</tr>
+		<tr align="center">>
+			<td>
+				<table class="table">
+					<tr><td class="titmod"><strong>Bienes de terceros</strong>
+					<ul class="ulint">
+						<li class="liint"><a target="content" href="./altaExterno.php">Alta de bien</a></li>
+						<li class="liint"><a target="content" href="./bmExterno.php">Asig. desde stock</a></li>
+						<li class="liint"><a target="content" href="./reasigExterno.php">Reasignacion de bien</a></li>
+					</ul>
+					</td></tr>
+				</table>
+			</td>
 	</table>
 	<br>
 	<div class="volver">
