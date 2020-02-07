@@ -3,7 +3,7 @@
 
     if (!isset($_SESSION['username'])) {
         $_SESSION['msg'] = "You must log in first";
-        header('location: ../home.php');
+        header('location: ../index.php');
     }
 
     if (isset($_GET['logout'])) {
@@ -12,57 +12,28 @@
         header("location: ../index.php");
     }
 
-    $id = null;
+    require_once '../database.php';
 
+    $id = 0;
+     
     if ( !empty($_GET['id'])) {
         $id = $_REQUEST['id'];
     }
-
-    if ( null==$id ) {
-        header("Location: bmFactura.php");
-    }
-
-    require_once '../database.php';
-
-    Database::disconnect();
      
-  if ( !empty($_POST)) {
-
-      // keep track post values
-      $id		= $_POST['id'];
-      $comp	= $_POST['comp'];
-      $prov  = $_POST['prov'];
-      $fec   = $_POST['fec'];
-      $imp   = $_POST['imp'];
-      $evpro = $_POST['evpro'];
-
-      // validate input
-      $valid = true;
-
-      if ($valid) {
-      $pdo = Database::connect();
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $sql = "UPDATE facturas set facnro = ?, facfecha = ?, facproveedor = ?, facimporte = ?, facevalprod = ? WHERE facid = ?";
-      $q = $pdo->prepare($sql);
-      $q->execute(array($comp,$fec,$prov,$imp,$evpro,$id));
-      Database::disconnect();
-      header("Location: modiFactura.php");
-      }
-  } else {
-      $id		= $_GET['id'];
-      $pdo = Database::connect();
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $sql = "SELECT * FROM facturas where facid = ?";
-      $q = $pdo->prepare($sql);
-      $q->execute(array($id));
-      $data  = $q->fetch(PDO::FETCH_ASSOC);
-      $comp  = $data['facnro'];
-      $fec   = $data['facfecha'];
-      $prov  = $data['facproveedor'];
-      $imp   = $data['facimporte'];
-      $evpro = $data['facevalprod'];
-      Database::disconnect();
-  }
+    if ( !empty($_POST)) {
+        // keep track post values
+        $id = $_POST['id'];
+         
+        // delete data
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "DELETE FROM facturas  WHERE facid = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($id));
+        Database::disconnect();
+        header("Location: bmFactura.php");
+         
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,25 +79,22 @@
         <!-- Begin Page Content ----------------------------------------------------------------------------->
         <div class="container-fluid">
 
-          <!-- <form class="user"> -->
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Listado de facturas.</h1>
-            <p class="mb-4">Facturas ordenadas desde la mas reciente.</p>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">Ingreso de Facturas</h1>
 
-          <form action="modiFactura.php" method="post">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <table class="tablei" >
-              <thead><tr><th colspan="2">Actualizacion de datos de la Factura</th></tr></thead>		
-              <tr><th>Factura:</th>        <th><input type="text" id="comp"  name="comp" tabindex="1" value="<?php echo $comp; ?>"></th></tr>
-              <tr><th>Proveedor:</th>      <th><input type="text" id="prov"  name="prov" tabindex="2" value="<?php echo $prov; ?>"></th></tr>
-              <tr><th>Fecha:</th>          <th><input type="date" id="fec"   name="fec"  tabindex="3" value="<?php echo $fec; ?>"></th></tr>
-              <tr><th>Importe:</th>        <th><input type="text" id="imp"   name="imp"  tabindex="4" value="<?php echo $imp; ?>"></th></tr>
-              <tr><th>Ev. Prod./Serv.:</th><th><input type="text" id="evpro" name="evpro"tabindex="6" value="<?php echo $evpro; ?>"></th></tr>
-              <tr><th colspan="2"><input type="submit" value="Actualizar" ></th></tr>
-            </table>
-          </form>
+        <!-- <form class="user"> -->
+
+        <form class="form-horizontal" action="bajaFactura.php" method="post">
+            <input type="hidden" name="id" value="<?php echo $id;?>"/>
+            <p class="alert alert-error">Esta seguro que quiere eliminar el registro ?</p>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-danger">SI</button>
+                <a class="btn" href="bmPer.php">No</a>
+            </div>
+        </form>
         </div>
-        <!-- End of Page Content ---------------------------------------------------------------------------->
+        <!-- /.container-fluid -->
+
       </div>
       <!-- End of Main Content ------------------------------------------------------------------------------>
       
@@ -149,6 +117,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
-  </body>
+
+</body>
 
 </html>

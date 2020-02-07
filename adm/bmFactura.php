@@ -109,7 +109,7 @@
                         echo '  </a>';
                         echo '</td> ';
                         echo '<td align="center">';
-                        echo '  <a href="bajaFac.php?id='.$row['facid'].'" class="btn btn-danger btn-circle btn-sm">';
+                        echo '  <a href="bajaFactura.php?id='.$row['facid'].'" class="btn btn-danger btn-circle btn-sm">';
                         echo '    <i class="fas fa-trash"></i>';
                         echo '  </a>';
                         echo '</td>';
