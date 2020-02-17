@@ -31,7 +31,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home.php">
         <div class="sidebar-brand-text mx-3">GePyME</div>
       </a>
 
@@ -88,8 +88,8 @@
             echo '    <div class="bg-white py-2 collapse-inner rounded">';            
             echo '      <h6 class="collapse-header">Personas:</h6>';
             echo '          <a class="collapse-item" href="#">Alta de Personas</a>';
-            echo '      <h6 class="collapse-header">Entrevistas:</h6>';
-            echo '          <a class="collapse-item" href="#">Agendar Entrevista</a>';
+            //echo '      <h6 class="collapse-header">Entrevistas:</h6>';
+            //echo '          <a class="collapse-item" href="#">Agendar Entrevista</a>';
             echo '    </div>';
             echo '  </div>';
             echo '</li>';
@@ -101,11 +101,11 @@
           echo '      <i class="fas fa-fw fa-folder"></i>';
           echo '      <span>Stock</span>';
           echo '    </a>';
-          if($privadm == 2) {
+          if($privadm == 1) {
             echo '  <div id="collapseStock" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">';
-            echo '    <div class="bg-white py-2 collapse-inner rounded">';            
-            echo '      <a class="collapse-item" href="../adm/indicFac.php">Ev. Prov. C/Fact.</a>';
-            echo '      <a class="collapse-item">Ev. Prov. C/Fact.</a>';
+            echo '    <div class="bg-white py-2 collapse-inner rounded">';
+            echo '      <h6 class="collapse-header">Estadisticas</h6>';
+            echo '        <a class="collapse-item" href="../stock/dashboard.php">Dashboard</a>';
             echo '    </div>';
             echo '  </div>';
             echo '</li>';
