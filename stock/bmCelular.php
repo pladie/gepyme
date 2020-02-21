@@ -62,8 +62,8 @@
 
         <!-- <form class="user"> -->
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Listado de Tags.</h1>
-          <p class="mb-4">Tags en stock.</p>
+        <h1 class="h3 mb-2 text-gray-800">Listado de Celulares.</h1>
+          <p class="mb-4">Celulares en stock.</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -72,34 +72,36 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                        <th>Modelo</th>
-                        <th>Serie</th>
-                        <th>Asignacion</th>
-                        <th>Editar</th>
-                        <th>Borrar</th>
+                      <th>Marca</th>
+                      <th>Modelo</th>
+                      <th>Serie</th>
+                      <th>Asignacion</th>
+                      <th>Detalle</th>
+                      <th>Asignar</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                        <th>Modelo</th>
-                        <th>Serie</th>
-                        <th>Asignacion</th>
-                        <th>Editar</th>
-                        <th>Borrar</th>
+                      <th>Marca</th>
+                      <th>Modelo</th>
+                      <th>Serie</th>
+                      <th>Asignacion</th>
+                      <th>Detalle</th>
+                      <th>Asignar</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php
                       $pdo = Database::connect();
-                      $sql = 'SELECT * FROM stock WHERE stktipo = "Tag" AND stkestado NOT IN ("BAJA") ORDER BY stkmodelo';
-                      
+                      $sql = 'SELECT * FROM stock WHERE stktipo = "Celular" AND stkestado NOT IN ("BAJA") ORDER BY stkmarca,stkmodelo';
                       foreach ($pdo->query($sql) as $row) {
-                        echo '<tr>';
+               	        echo '<tr>';
+                        echo '<td>'. $row['stkmarca'] . '</td>';
                         echo '<td>'. $row['stkmodelo'] . '</td>';
                         echo '<td>'. $row['stkserie'] . '</td>';
                         echo '<td>'. $row['stkasignacion'] . '</td>';
                         echo '<td align="center">';
-                        echo '  <a class="btn btn-warning btn-circle btn-sm" href="modTag.php?id='.$row['stkid'].'" >';
+                        echo '  <a class="btn btn-warning btn-circle btn-sm" href="modCelular.php?id='.$row['stkid'].'" >';
                         echo '    <i class="fas fa-exclamation-triangle"></i>';
                         echo '  </a>';
                         echo '</td> ';
@@ -109,8 +111,8 @@
                         echo '  </a>';
                         echo '</td>';
                         echo '</tr>';
-                    }
-                    Database::disconnect();
+                      }
+                      Database::disconnect();
                     ?>
                   </tbody>
                 </table>

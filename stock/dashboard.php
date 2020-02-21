@@ -126,11 +126,11 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                         <div class="dropdown-header">Menú:</div>
-                                        <a class="dropdown-item" href="#">Alta de Celular</a>
-                                        <a class="dropdown-item" href="#">Reasignación de Celular</a>
+                                        <a class="dropdown-item" href="altaCelular.php">Alta de Celular</a>
+                                        <a class="dropdown-item" href="bmCelular.php">Reasignación de Celular</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Alta de Línea</a>
-                                        <a class="dropdown-item" href="#">Reasignación de Línea</a>
+                                        <a class="dropdown-item" href="altaLinea.php#">Alta de Línea</a>
+                                        <a class="dropdown-item" href="bmLinea.php">Reasignación de Línea</a>
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                         <div class="dropdown-header">Menú:</div>
                                         <a class="dropdown-item" href="altaTag.php">Alta de Tag</a>
-                                        <a class="dropdown-item" href="#">Reasignación de Tag</a>
+                                        <a class="dropdown-item" href="modTag.php">Reasignación de Tag</a>
                                     </div>
                                 </div>
                             </div>

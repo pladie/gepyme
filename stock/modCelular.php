@@ -24,42 +24,43 @@
     }
 
     if ( !empty($_POST)) {
+        
+      // keep track post values
+      $id		= $_POST['id'];
+      $marca = $_POST['marca'];
+      $mod   = $_POST['mod'];
+      $est   = $_POST['est'];
+      $serie = $_POST['serie'];
+      $asig  = $_POST['asig'];
+       
+      // validate input
+      $valid = true;
+       
+      // update data
+      if ($valid) {
+          $pdo = Database::connect();
+          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stkserie = ?, stkasignacion = ?, stkestado = ? WHERE stkid = ?";
+          $q = $pdo->prepare($sql);
+          $q->execute(array($marca,$mod,$serie,$asig,'ASIGNADO',$id));
+          Database::disconnect();
+          header("Location: bmCel.php");
+      }
+  } else {
+      $pdo = Database::connect();
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $sql = "SELECT * FROM stock where stkid = ?";
+      $q = $pdo->prepare($sql);
+      $q->execute(array($id));
+      $data  = $q->fetch(PDO::FETCH_ASSOC);
+      $marca = $data['stkmarca'];
+      $mod   = $data['stkmodelo'];
+      $serie = $data['stkserie'];
+      $est	= $data['stkestado'];
+      $asig  = $data['stkasignacion'];
+      Database::disconnect();
+  }
 
-        // keep track post values
-        $id             = $_POST['id'];
-        $mod   = $_POST['mod'];
-        $serie = $_POST['serie'];
-        $asig  = $_POST['asig'];
-
-        // validate input
-        $valid = true;
-
-        // update data
-        if ($valid) {
-            $pdo = Database::connect();
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE stock  set stkmodelo = ?, stkserie = ?, stkasignacion = ?, stkestado = ? WHERE stkid = ?";
-            $q = $pdo->prepare($sql);
-            $q->execute(array($mod,$serie,$asig,'ASIGNADO',$id));
-
-            $sql = "INSERT INTO log (logtrans,logserie,logitem) values(?, ?, ?)";
-            $q = $pdo->prepare($sql);
-            $q->execute(array('CAMBIO',$serie,$stkasignacion . '|' . $stkestado));
-            Database::disconnect();
-            header("Location: bmTag.php");
-        }
-    } else {
-        $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM stock where stkid = ?";
-        $q = $pdo->prepare($sql);
-        $q->execute(array($id));
-        $data  = $q->fetch(PDO::FETCH_ASSOC);
-        $mod   = $data['stkmodelo'];
-        $serie = $data['stkserie'];
-        $asig  = $data['stkasignacion'];
-        Database::disconnect();
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,8 +108,8 @@
 
           <!-- <form class="user"> -->
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Listado de facturas.</h1>
-            <p class="mb-4">Facturas ordenadas desde la mas reciente.</p>
+          <h1 class="h3 mb-2 text-gray-800">Reasignacion Celulares.</h1>
+            <p class="mb-4">Celular.</p>
 
             <form action="modTag.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">

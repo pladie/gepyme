@@ -62,8 +62,8 @@
 
         <!-- <form class="user"> -->
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Listado de Tags.</h1>
-          <p class="mb-4">Tags en stock.</p>
+        <h1 class="h3 mb-2 text-gray-800">Listado de Líneas.</h1>
+          <p class="mb-4">Líneas en stock.</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -72,32 +72,43 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                        <th>Marca</th>
                         <th>Modelo</th>
-                        <th>Serie</th>
+                        <th>Numero</th>
+                        <th>Nro. Serie</th>
+                        <th>Plan</th>
                         <th>Asignacion</th>
-                        <th>Editar</th>
-                        <th>Borrar</th>
+                        <th>Proyecto</th>
+                        <th>Detalle</th>
+                        <th>Asignar</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
+                    <th>Marca</th>
                         <th>Modelo</th>
-                        <th>Serie</th>
+                        <th>Numero</th>
+                        <th>Nro. Serie</th>
+                        <th>Plan</th>
                         <th>Asignacion</th>
-                        <th>Editar</th>
-                        <th>Borrar</th>
+                        <th>Proyecto</th>
+                        <th>Detalle</th>
+                        <th>Asignar</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php
                       $pdo = Database::connect();
-                      $sql = 'SELECT * FROM stock WHERE stktipo = "Tag" AND stkestado NOT IN ("BAJA") ORDER BY stkmodelo';
-                      
+                      $sql = 'SELECT * FROM stock WHERE stktipo = "Linea" AND stkestado NOT IN ("BAJA") ORDER BY stkserie';      
                       foreach ($pdo->query($sql) as $row) {
-                        echo '<tr>';
+               	        echo '<tr>';
+                        echo '<td>'. $row['stkmarca'] . '</td>';
                         echo '<td>'. $row['stkmodelo'] . '</td>';
+                        echo '<td>'. $row['stknumero'] . '</td>';
                         echo '<td>'. $row['stkserie'] . '</td>';
+                        echo '<td>'. $row['stkplan'] . '</td>';
                         echo '<td>'. $row['stkasignacion'] . '</td>';
+                        echo '<td>'. $row['stkproyecto'] . '</td>';
                         echo '<td align="center">';
                         echo '  <a class="btn btn-warning btn-circle btn-sm" href="modTag.php?id='.$row['stkid'].'" >';
                         echo '    <i class="fas fa-exclamation-triangle"></i>';
