@@ -34,7 +34,7 @@
 														else 0 end)) AS evAprod
 													FROM facturas
 												  WHERE facproveedor IN (SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 0 ORDER BY 1)
-													 AND facfecha BETWEEN '2018-01-01' AND '2018-03-31' 
+													 AND facfecha BETWEEN '2019-01-01' AND '2019-03-31' 
 												  GROUP BY 1
 												) AS tbl1 GROUP BY 1
 									) AS tbl2
@@ -64,7 +64,7 @@
 														else 0 end)) AS evAprod
 													FROM facturas
 													WHERE facproveedor IN (SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 0 ORDER BY 1)
-													AND facfecha BETWEEN '2018-04-01' and '2018-06-30' 
+													AND facfecha BETWEEN '2019-04-01' and '2019-06-30' 
 													GROUP BY 1
 												) AS tbl1 GROUP BY 1
 									) AS tbl2
@@ -94,7 +94,7 @@
 														else 0 end)) AS evAprod
 													FROM facturas
 													WHERE facproveedor IN (SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 0 ORDER BY 1)
-													AND facfecha BETWEEN '2018-07-01' and '2018-09-30' 
+													AND facfecha BETWEEN '2019-07-01' and '2019-09-30' 
 													GROUP BY 1
 												) AS tbl1 GROUP BY 1
 									) AS tbl2
@@ -124,7 +124,7 @@
 														else 0 end)) AS evAprod
 													FROM facturas
 													WHERE facproveedor IN (SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 0 ORDER BY 1)
-													AND facfecha BETWEEN '2018-10-01' and '2018-12-31'
+													AND facfecha BETWEEN '2019-10-01' and '2019-12-31'
 													GROUP BY 1
 												) AS tbl1 GROUP BY 1
 									) AS tbl2
@@ -154,7 +154,7 @@
 							else 0 end)) AS evAprod
 						FROM facturas
 						WHERE facproveedor IN (SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 0 ORDER BY 1)
-						AND facfecha BETWEEN '2019-01-01' and '2019-03-31'
+						AND facfecha BETWEEN '2020-01-01' and '2020-03-31'
 						GROUP BY 1
 					) AS tbl1 GROUP BY 1
 				) AS tbl2

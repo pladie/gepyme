@@ -95,7 +95,7 @@
         <div class="container-fluid">
 
         <h3>Alta de Celular</h3>
-        <form class="form-horizontal" action="altaCel.php" method="post">
+        <form class="form-horizontal" action="altaCelular.php" method="post">
         		<table class="table" >
 						<tr align="left"><th>Marca :</th>     <th><input name="marca" type="text" placeholder="Marca"      value="<?php echo !empty($marca)?$marca:'';?>"></th></tr>             
              		<tr align="left"><th>Modelo :</th>    <th><input name="mod"   type="text" placeholder="Modelo"     value="<?php echo !empty($mod)?$mod:'';?>">    </th></tr>
