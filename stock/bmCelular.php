@@ -72,12 +72,12 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Marca</th>
+                    <th>Marca</th>
                       <th>Modelo</th>
                       <th>Serie</th>
                       <th>Asignacion</th>
-                      <th>Detalle</th>
-                      <th>Asignar</th>
+                      <th>Reasignar</th>
+                      <th>Remito</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -86,30 +86,30 @@
                       <th>Modelo</th>
                       <th>Serie</th>
                       <th>Asignacion</th>
-                      <th>Detalle</th>
-                      <th>Asignar</th>
+                      <th>Reasignar</th>
+                      <th>Remito</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php
                       $pdo = Database::connect();
-                      $sql = 'SELECT * FROM stock WHERE stktipo = "Celular" AND stkestado NOT IN ("BAJA") ORDER BY stkmarca,stkmodelo';
+                      $sql = 'SELECT * FROM stock WHERE stktipo = "Celular" AND stkasignacion NOT IN ("BAJA") ORDER BY stkmarca,stkmodelo';
                       foreach ($pdo->query($sql) as $row) {
                	        echo '<tr>';
-                        echo '<td>'. $row['stkmarca'] . '</td>';
-                        echo '<td>'. $row['stkmodelo'] . '</td>';
-                        echo '<td>'. $row['stkserie'] . '</td>';
-                        echo '<td>'. $row['stkasignacion'] . '</td>';
-                        echo '<td align="center">';
-                        echo '  <a class="btn btn-info btn-circle btn-sm" href="modCelular.php?id='.$row['stkid'].'" >';
-                        echo '    <i class="fas fa-info"></i>';
-                        echo '  </a>';
-                        echo '</td> ';
-                        echo '<td align="center">';
-                        echo '  <a href="bajaTag.php?id='.$row['stkid'].'" class="btn btn-success btn-circle btn-sm">';
-                        echo '    <i class="fas fa-check"></i>';
-                        echo '  </a>';
-                        echo '</td>';
+                        echo '  <td>'. $row['stkmarca'] . '</td>';
+                        echo '  <td>'. $row['stkmodelo'] . '</td>';
+                        echo '  <td>'. $row['stkserie'] . '</td>';
+                        echo '  <td>'. $row['stkasignacion'] . '</td>';
+                        echo '  <td align="center">';
+                        echo '    <a class="btn btn-success btn-circle btn-sm" href="modCelular.php?id='.$row['stkid'].'" >';
+                        echo '      <i class="fas fa-check"></i>';
+                        echo '    </a>';
+                        echo '  </td> ';
+                        echo '  <td align="center">';
+                        echo '    <a href="pdfBien.php?nombre='.$row['stkasignacion'].'&tipo='.$row['stktipo'].'&marca='.$row['stkmarca'].'&modelo='.$row['stkmodelo'].'&serie='.$row['stkserie'].'&numero='.$row['stknumero'].'" class="btn btn-success btn-circle btn-sm">';
+                        echo '      <i class="fas fa-file-pdf"></i>';
+                        echo '    </a>';
+                        echo '  </td>';
                         echo '</tr>';
                       }
                       Database::disconnect();

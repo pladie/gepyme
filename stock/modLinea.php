@@ -20,7 +20,7 @@
     }
 
     if ( null==$id ) {
-        header("Location: bmTag.php");
+        header("Location: bmLinea.php");
     }
 
     if ( !empty($_POST)) {
@@ -46,7 +46,7 @@
             $q = $pdo->prepare($sql);
             $q->execute(array('CAMBIO',$serie,$stkasignacion . '|' . $stkestado));
             Database::disconnect();
-            header("Location: bmTag.php");
+            header("Location: bmLinea.php");
         }
     } else {
         $pdo = Database::connect();

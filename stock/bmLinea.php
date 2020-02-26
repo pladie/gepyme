@@ -73,50 +73,47 @@
                   <thead>
                     <tr>
                         <th>Marca</th>
-                        <th>Modelo</th>
                         <th>Numero</th>
                         <th>Nro. Serie</th>
                         <th>Plan</th>
                         <th>Asignacion</th>
                         <th>Proyecto</th>
-                        <th>Detalle</th>
-                        <th>Asignar</th>
+                        <th>Reasignar</th>
+                        <th>Remito</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                     <th>Marca</th>
-                        <th>Modelo</th>
                         <th>Numero</th>
                         <th>Nro. Serie</th>
                         <th>Plan</th>
                         <th>Asignacion</th>
                         <th>Proyecto</th>
-                        <th>Detalle</th>
-                        <th>Asignar</th>
+                        <th>Reasignar</th>
+                        <th>Remito</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php
                       $pdo = Database::connect();
-                      $sql = 'SELECT * FROM stock WHERE stktipo = "Linea" AND stkestado NOT IN ("BAJA") ORDER BY stkserie';      
+                      $sql = 'SELECT * FROM stock WHERE stktipo = "Linea" AND stkasignacion NOT IN ("BAJA") ORDER BY stkserie';      
                       foreach ($pdo->query($sql) as $row) {
                	        echo '<tr>';
                         echo '<td>'. $row['stkmarca'] . '</td>';
-                        echo '<td>'. $row['stkmodelo'] . '</td>';
                         echo '<td>'. $row['stknumero'] . '</td>';
                         echo '<td>'. $row['stkserie'] . '</td>';
                         echo '<td>'. $row['stkplan'] . '</td>';
                         echo '<td>'. $row['stkasignacion'] . '</td>';
                         echo '<td>'. $row['stkproyecto'] . '</td>';
                         echo '<td align="center">';
-                        echo '  <a class="btn btn-info btn-circle btn-sm" href="modTag.php?id='.$row['stkid'].'" >';
-                        echo '    <i class="fas fa-info"></i>';
-                        echo '  </a>';
-                        echo '</td> ';
-                        echo '<td align="center">';
                         echo '  <a href="modLinea.php?id='.$row['stkid'].'" class="btn btn-success btn-circle btn-sm">';
                         echo '    <i class="fas fa-check"></i>';
+                        echo '  </a>';
+                        echo '</td>';
+                        echo '<td align="center">';
+                        echo '  <a href="pdfBien.php?nombre='.$row['stkasignacion'].'&tipo='.$row['stktipo'].'&marca='.$row['stkmarca'].'&modelo='.$row['stkmodelo'].'&serie='.$row['stkserie'].'&numero='.$row['stknumero'].'" class="btn btn-success btn-circle btn-sm">';
+                        echo '    <i class="fas fa-file-pdf"></i>';
                         echo '  </a>';
                         echo '</td>';
                         echo '</tr>';
