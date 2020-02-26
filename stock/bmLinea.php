@@ -110,13 +110,13 @@
                         echo '<td>'. $row['stkasignacion'] . '</td>';
                         echo '<td>'. $row['stkproyecto'] . '</td>';
                         echo '<td align="center">';
-                        echo '  <a class="btn btn-warning btn-circle btn-sm" href="modTag.php?id='.$row['stkid'].'" >';
-                        echo '    <i class="fas fa-exclamation-triangle"></i>';
+                        echo '  <a class="btn btn-info btn-circle btn-sm" href="modTag.php?id='.$row['stkid'].'" >';
+                        echo '    <i class="fas fa-info"></i>';
                         echo '  </a>';
                         echo '</td> ';
                         echo '<td align="center">';
-                        echo '  <a href="bajaTag.php?id='.$row['stkid'].'" class="btn btn-danger btn-circle btn-sm">';
-                        echo '    <i class="fas fa-trash"></i>';
+                        echo '  <a href="modLinea.php?id='.$row['stkid'].'" class="btn btn-success btn-circle btn-sm">';
+                        echo '    <i class="fas fa-check"></i>';
                         echo '  </a>';
                         echo '</td>';
                         echo '</tr>';
