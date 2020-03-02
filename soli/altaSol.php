@@ -3,52 +3,49 @@
 
     if (!isset($_SESSION['username'])) {
         $_SESSION['msg'] = "You must log in first";
-        header('location: ../index.php');
+        header('location: ../web/index.php');
     }
 
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['username']);
-        header("location: ../index.php");
+        header("location: ../web/index.php");
     }
 
     require_once '../database.php';
 
     if ( !empty($_POST)) {
-      // keep track validation errors
-      $marca = null;
-      $mod   = null;
-      $serie = null;
-       
-      // keep track post values
-      $marca = $_POST['marca'];
-      $mod   = $_POST['mod'];
-      $serie = $_POST['serie'];
-       
-      // validate input
-      $valid = true;
-      if (empty($marca)) {
-          $marca = 'Please enter Name';
-          $valid = false;
-      }
-      
-      // insert data
-      if ($valid) {
-          $pdo = Database::connect();
-          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          
-          $sql = "INSERT INTO stock (stkmarca,stkmodelo,stkserie,stkasignacion,stkestado,stktipo) values(?, ?, ?, ?, ?, ?)";
-          $q = $pdo->prepare($sql);
-          $q->execute(array($marca,$mod,$serie,'STOCK','ASIGNADO','Celular'));
-          
-          $sql = "INSERT INTO log (logtrans,logserie,logitem) values(?, ?, ?)";
-          $q = $pdo->prepare($sql);
-          $q->execute(array('ALTA Celular->STOCK',$serie,'STOCK'));
-                   
-          Database::disconnect();
-          header("Location: bmCelular.php");
-      }
-  }
+        // keep track validation errors
+        $tipo = null;
+        $desc = null;
+
+        // keep track post values
+        $tipo = $_POST['tipo'];
+        $desc = $_POST['desc'];
+
+        // validate input
+        $valid = true;
+        if (empty($tipo)) {
+            $valid = false;
+        }
+
+        // insert data
+        if ($valid) {
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "INSERT INTO solicitudes (soltipo,solDescripcion) values (?, ?)";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($tipo,$desc));
+
+            $sql = "INSERT INTO log (logtrans,logserie,logitem) values(?, ?, ?)";
+            $q = $pdo->prepare($sql);
+            $q->execute(array('ALTA->Solicitud',0,$desc));
+
+            Database::disconnect();
+            header("Location: altaSol.php");
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,15 +91,14 @@
         <!-- Begin Page Content ----------------------------------------------------------------------------->
         <div class="container-fluid">
 
-          <h3>Alta de Celular</h3>
-          <form class="form-horizontal" action="altaCelular.php" method="post">
+            <h3>Ingreso de Solicitudes</h3>
+            <form class="form-horizontal" action="altaSol.php" method="post">
               <table class="table" >
-              <tr align="left"><th>Marca :</th>     <th><input name="marca" type="text" placeholder="Marca"      value="<?php echo !empty($marca)?$marca:'';?>"></th></tr>             
-                  <tr align="left"><th>Modelo :</th>    <th><input name="mod"   type="text" placeholder="Modelo"     value="<?php echo !empty($mod)?$mod:'';?>">    </th></tr>
-                  <tr align="left"><th>Serie :</th>     <th><input name="serie" type="text" placeholder="Serie"      value="<?php echo !empty($serie)?$serie:'';?>"></th></tr>
-                  <tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
+                <tr align="left"><th>Tipo :</th><th><input name="tipo" type="text" placeholder="Tipo" value="<?php echo !empty($tipo)?$tipo:'';?>">    </th></tr>
+                <tr align="left"><th>Descripcion  :</th><th><input name="desc"  type="text" placeholder="Descripcion"  value="<?php echo !empty($desc)?$desc:'';?>"></th></tr>
+                <tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
               </table>
-          </form>
+            </form>
 
         </div>
       <!-- End of Main Content ------------------------------------------------------------------------------>

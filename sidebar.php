@@ -1,4 +1,6 @@
 <?php
+
+  session_start();
     
   require_once '../database.php';
 
@@ -6,7 +8,7 @@
 
   if (!isset($_SESSION['username'])) {
 		$_SESSION['msg'] = "You must log in first";
-		header('location: index.php');
+		header('location: ./web');
 	}
 
 	$pdo = Database::connect();
@@ -87,7 +89,8 @@
             echo '  <div id="collapseRH" class="collapse" aria-labelledby="headingRH" data-parent="#accordionSidebar">';
             echo '    <div class="bg-white py-2 collapse-inner rounded">';            
             echo '      <h6 class="collapse-header">Personas:</h6>';
-            echo '          <a class="collapse-item" href="#">Alta de Personas</a>';
+            echo '          <a class="collapse-item" href="../rrhh/altaPersona.php">Alta de Personas</a>';
+            echo '          <a class="collapse-item" href="../rrhh/bmPersona.php">Modificación de Personas</a>';
             //echo '      <h6 class="collapse-header">Entrevistas:</h6>';
             //echo '          <a class="collapse-item" href="#">Agendar Entrevista</a>';
             echo '    </div>';
@@ -106,6 +109,22 @@
             echo '    <div class="bg-white py-2 collapse-inner rounded">';
             echo '      <h6 class="collapse-header">Estadisticas</h6>';
             echo '        <a class="collapse-item" href="../stock/dashboard.php">Dashboard</a>';
+            echo '    </div>';
+            echo '  </div>';
+            echo '</li>';
+          }
+        }
+        if(1 == $adm && $privstock >= 0) {
+          echo '  <li class="nav-item">';
+          echo '    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSoli" aria-expanded="true" aria-controls="collapseSoli">';
+          echo '      <i class="fas fa-fw fa-folder"></i>';
+          echo '      <span>Solicitudes</span>';
+          echo '    </a>';
+          if($privadm == 1) {
+            echo '  <div id="collapseSoli" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">';
+            echo '    <div class="bg-white py-2 collapse-inner rounded">';
+            echo '      <h6 class="collapse-header">Estadisticas</h6>';
+            echo '        <a class="collapse-item" href="../soli/altaSol.php">Generar Solicitud</a>';
             echo '    </div>';
             echo '  </div>';
             echo '</li>';
@@ -140,6 +159,7 @@
 	            <a href="http://www.mariadb.org/"><img src="../img/mariadb.png"  width="50" height="15" alt=""></a>
               <a href="https://jpgraph.net">    <img src="../img/jpgraph_logo.png" width="65" height="25" alt=""></a>
               <a href="http://www.fpdf.org">    <img src="../img/fpdfLogo.png" width="50" height="25" alt=""></a>
+              <a href="https://startbootstrap.com">    <img src="../img/startboostrap.png" width="70" height="25" alt=""></a>
             </a>
         </li>
     </ul>

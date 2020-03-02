@@ -13,54 +13,49 @@
     }
 
     require_once '../database.php';
-
     $id = null;
     if ( !empty($_GET['id'])) {
         $id = $_REQUEST['id'];
     }
-
+      
     if ( null==$id ) {
-        header("Location: bmTag.php");
+        header("Location: bmPer.php");
     }
 
-    if ( !empty($_POST)) {
-        
-      // keep track post values
-      $id		= $_POST['id'];
-      $marca = $_POST['marca'];
-      $mod   = $_POST['mod'];
-      $est   = $_POST['est'];
-      $serie = $_POST['serie'];
-      $asig  = $_POST['asig'];
-       
-      // validate input
-      $valid = true;
-       
-      // update data
+	   if ( !empty($_POST)) {
+    	$id	   = $_POST['id'];
+    	$nom	   = $_POST['nom'];
+    	$dni	   = $_POST['dni'];
+    	$estado  = $_POST['estado'];
+    	$fecalta = $_POST['fecalta'];
+    	$fecbaja = $_POST['fecbaja'];
+    	$asig		= $_POST['asig'];
+    	$valid   = true;
+      
       if ($valid) {
-          $pdo = Database::connect();
-          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          $sql = "UPDATE stock  set stkmarca = ?, stkmodelo = ?, stkserie = ?, stkasignacion = ?, stkestado = ? WHERE stkid = ?";
-          $q = $pdo->prepare($sql);
-          $q->execute(array($marca,$mod,$serie,$asig,'ASIGNADO',$id));
-          Database::disconnect();
-          header("Location: bmCel.php");
+      	$pdo = Database::connect();
+         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+         $sql = "UPDATE personas set pernombre = ?, perdni = ?, perestado = ?, perasig = ?, perfecalta = ?, perfecbaja = ? WHERE perid = ?";
+         $q = $pdo->prepare($sql);
+         $q->execute(array($nom,$dni,$estado,$asig,$fecalta,$fecbaja,$id));
+         Database::disconnect();
+         header("Location: bmPer.php");
       }
-  } else {
-      $pdo = Database::connect();
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $sql = "SELECT * FROM stock where stkid = ?";
-      $q = $pdo->prepare($sql);
-      $q->execute(array($id));
-      $data  = $q->fetch(PDO::FETCH_ASSOC);
-      $marca = $data['stkmarca'];
-      $mod   = $data['stkmodelo'];
-      $serie = $data['stkserie'];
-      $est	= $data['stkestado'];
-      $asig  = $data['stkasignacion'];
-      Database::disconnect();
-  }
-
+      } else {
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT * FROM personas where perid = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($id));
+        $data    = $q->fetch(PDO::FETCH_ASSOC);
+        $nom	  = $data['pernombre'];
+        $dni	  = $data['perdni'];
+        $estado  = $data['perestado'];
+        $asig    = $data['perasig'];
+        $fecalta = $data['perfecalta'];
+        $fecbaja = $data['perfecbaja'];
+        Database::disconnect();
+    	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,28 +103,20 @@
 
           <!-- <form class="user"> -->
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Reasignacion Celulares.</h1>
-            <p class="mb-4">Celular.</p>
-
-            <form action="modTag.php" method="post">
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <table class="table" >
-                                <tr align="left"><th>Modelo:</th><th><input type="text" id="mod"   name="mod"   tabindex="2" value="<?php echo $mod; ?>"></th></tr>
-                                <tr align="left"><th>Serie:</th> <th><input type="text" id="serie" name="serie" tabindex="3" value="<?php echo $serie; ?>"></th></tr>
-                <?php
-                                        $pdo = Database::connect();
-                                        $sql = "SELECT pernombre FROM personas WHERE perestado = 'Empleado' ORDER BY pernombre;";
-                                        echo '<tr align="left"><th>Asignacion:</th><th><select name="asig">';
-                                        foreach ($pdo->query($sql) as $row) {
-                                                echo '<option value="'. $row['pernombre'] . '">'. $row['pernombre'] . '</option>';
-                                        }
-                                        Database::disconnect();
-                                ?>
-                                <tr><th colspan="2"><input type="submit" value="Actualizar" ></th></tr>
-                        </table>
-                </form>
-
-            </div>
+          <h1 class="h3 mb-2 text-gray-800">Modificacino de Persona.</h1>
+          <form action="modPersona.php" method="post">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <table class="table" >
+                <tr><th>Nombre   :</th><th><input type="text" id="nom"     name="nom"     tabindex="1" value="<?php echo $nom; ?>"></th></tr>
+                <tr><th>DNI      :</th><th><input type="text" id="dni"     name="dni"     tabindex="2" value="<?php echo $dni; ?>"></th></tr>
+                <tr><th>Estado   :</th><th><input type="text" id="estado"  name="estado"  tabindex="3" value="<?php echo $estado; ?>"></th></tr>
+                <tr><th>Proyecto :</th><th><input type="text" id="asig"    name="asig"    tabindex="4" value="<?php echo $asig; ?>"></th></tr>			
+                <tr><th>Alta     :</th><th><input type="date" id="fecalta" name="fecalta" tabindex="5" value="<?php echo $fecalta; ?>"></th></tr>
+                <tr><th>Baja     :</th><th><input type="date" id="fecbaja" name="fecbaja" tabindex="6" value="<?php echo $fecbaja; ?>"></th></tr>
+                <tr><th colspan="2"><input type="submit" value="Actualizar" ></th></tr>
+            </table>
+          </form>
+        </div>
         <!-- End of Page Content ---------------------------------------------------------------------------->
       </div>
       <!-- End of Main Content ------------------------------------------------------------------------------>

@@ -1,54 +1,55 @@
 <?php
-    session_start(); 
+
+    session_start();
 
     if (!isset($_SESSION['username'])) {
         $_SESSION['msg'] = "You must log in first";
-        header('location: ../index.php');
+        header('location: ../web');
     }
 
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['username']);
-        header("location: ../index.php");
+        header("location: ../web");
     }
 
     require_once '../database.php';
 
     if ( !empty($_POST)) {
-      // keep track validation errors
-      $marca = null;
-      $mod   = null;
-      $serie = null;
-       
-      // keep track post values
-      $marca = $_POST['marca'];
-      $mod   = $_POST['mod'];
-      $serie = $_POST['serie'];
-       
-      // validate input
-      $valid = true;
-      if (empty($marca)) {
-          $marca = 'Please enter Name';
-          $valid = false;
-      }
-      
-      // insert data
-      if ($valid) {
-          $pdo = Database::connect();
-          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          
-          $sql = "INSERT INTO stock (stkmarca,stkmodelo,stkserie,stkasignacion,stkestado,stktipo) values(?, ?, ?, ?, ?, ?)";
-          $q = $pdo->prepare($sql);
-          $q->execute(array($marca,$mod,$serie,'STOCK','ASIGNADO','Celular'));
-          
-          $sql = "INSERT INTO log (logtrans,logserie,logitem) values(?, ?, ?)";
-          $q = $pdo->prepare($sql);
-          $q->execute(array('ALTA Celular->STOCK',$serie,'STOCK'));
-                   
-          Database::disconnect();
-          header("Location: bmCelular.php");
-      }
-  }
+        // keep track validation errors
+        $nombre = null;
+        $dni    = null;
+        $estado = null;
+        $fecha  = null;
+        $asig	= null;
+         
+        // keep track post values
+        $nombre = $_POST['nombre'];
+        $dni    = $_POST['dni'];
+		$estado = $_POST['estado'];
+        $fecha  = $_POST['fecha'];
+        $asig   = $_POST['asignacion'];
+         
+        // validate input
+        $valid = true;
+        if (empty($nombre)) {
+            $nombre = 'Please enter Name';
+            $valid = false;
+        }
+        
+        // insert data
+        if ($valid) {
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            $sql = "INSERT INTO personas (pernombre,perdni,perestado,perfecalta,perasig) values(?, ?, ?, ? ,?)";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($nombre,$dni,$estado,$fecha,$asig));
+            
+            Database::disconnect();
+            header("Location: bmPer.php");
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,17 +95,20 @@
         <!-- Begin Page Content ----------------------------------------------------------------------------->
         <div class="container-fluid">
 
-          <h3>Alta de Celular</h3>
-          <form class="form-horizontal" action="altaCelular.php" method="post">
-              <table class="table" >
-              <tr align="left"><th>Marca :</th>     <th><input name="marca" type="text" placeholder="Marca"      value="<?php echo !empty($marca)?$marca:'';?>"></th></tr>             
-                  <tr align="left"><th>Modelo :</th>    <th><input name="mod"   type="text" placeholder="Modelo"     value="<?php echo !empty($mod)?$mod:'';?>">    </th></tr>
-                  <tr align="left"><th>Serie :</th>     <th><input name="serie" type="text" placeholder="Serie"      value="<?php echo !empty($serie)?$serie:'';?>"></th></tr>
-                  <tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
-              </table>
-          </form>
+            <h3>Alta de Celular</h3>
+            <form class="form-horizontal" action="altaPer.php" method="post">
+                <table class="table">
+                    <tr><th>Nombre :</th> <th><input name="nombre" type="text" placeholder="Nombre" value="<?php echo !empty($nombre)?$nombre:'';?>"></th></tr>
+                    <tr><th>DNI :</th>    <th><input name="dni"    type="text" placeholder="DNI"    value="<?php echo !empty($dni)?$dni:'';?>"></th></tr>
+                    <tr><th>Estado :</th> <th><input name="estado" type="text" placeholder="Estado" value="<?php echo !empty($estado)?$estado:'';?>"></th></tr>
+                    <tr><th>Fecha :</th>  <th><input name="fecha"  type="date" placeholder="fecha"  value="<?php echo !empty($fecha)?$fecha:'';?>"></th></tr>
+                    <tr><th>Pryecto :</th><th><input name="asig"   type="text" placeholder="asig"   value="<?php echo !empty($asig)?$asig:'';?>"></th></tr>
+                    <tr><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
+                </table>
+            </form>
+            <br>
+		</div>
 
-        </div>
       <!-- End of Main Content ------------------------------------------------------------------------------>
       
       <!-- Footer ------------------------------------------------------------------------------------------->
@@ -129,4 +133,7 @@
 
 </body>
 
+</html>
+
+	</body>
 </html>

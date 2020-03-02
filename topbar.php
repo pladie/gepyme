@@ -1,3 +1,20 @@
+<?php
+  session_start();
+
+  require_once '../database.php';
+  $pdo = Database::connect();
+
+  // Cuento cantidad de alarmas
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $sql = "SELECT count(*) AS canal FROM solicitudes WHERE solTipo = ?";
+  $q = $pdo->prepare($sql);
+  $q->execute(array(1));
+  $data  = $q->fetch(PDO::FETCH_ASSOC);
+  $cantalarm = $data['canal'];
+
+  Database::disconnect();
+?>
+        
         <!-- Topbar ----------------------------------------------------------------------------------------->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -9,22 +26,31 @@
           <!-- Topbar Navbar -------------------------------------------------------------------------------->
           <ul class="navbar-nav ml-auto">
 
-            <!-- Nav Item - Alerts -->
+            <!-- Notificaciones de Alertas -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter"></span>
+                <!-- Contador de Alertas -->
+                <?php if ($cantalarm > 0) echo '<span class="badge badge-danger badge-counter">' . $cantalarm . '</span>';?>
               </a>
-            </li>
-
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter"></span>
-              </a>
+              <!-- Muestro las alarmas si hay -->
+              <?php if ($cantalarm > 0) {
+                echo '<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">';
+                echo '  <h6 class="dropdown-header">Alertas</h6>';
+                echo '  <a class="dropdown-item d-flex align-items-center" href="#">';
+                echo '    <div class="mr-3">';
+                echo '      <div class="icon-circle bg-primary">';
+                echo '        <i class="fas fa-file-alt text-white"></i>';
+                echo '      </div>';
+                echo '    </div>';
+                echo '    <div>';
+                echo '      <div class="small text-gray-500"><?php echo date("d/m/Y");?></div>';
+                echo '      <span class="font-weight-bold">Hay ' . $cantalarm . ' solicitudes de compra sin procesar.</span>';
+                echo '    </div>';
+                echo '  </a>';
+                echo '</div>';
+                }
+              ?>
             </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
@@ -32,28 +58,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usuario</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username'];?></span>
               </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Perfil
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Configuracion
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Actividad
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Salir
-                </a>
-              </div>
             </li>
 
           </ul>

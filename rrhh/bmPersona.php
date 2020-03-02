@@ -63,7 +63,7 @@
         <!-- <form class="user"> -->
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Listado de Celulares.</h1>
-          <p class="mb-4">Celulares en stock.</p>
+          <p class="mb-4">Listado de Personas.</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -72,49 +72,45 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                    <th>Marca</th>
-                      <th>Modelo</th>
-                      <th>Serie</th>
-                      <th>Asignacion</th>
-                      <th>Reasignar</th>
-                      <th>Remito</th>
+                        <th>Nombre</th>
+                        <th>DNI</th>
+                        <th>Estado</th>
+                        <th>Proyecto</th>
+                        <th>Fecha Alta</th>
+                        <th>Modificar</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Marca</th>
-                      <th>Modelo</th>
-                      <th>Serie</th>
-                      <th>Asignacion</th>
-                      <th>Reasignar</th>
-                      <th>Remito</th>
+                        <th>Nombre</th>
+                        <th>DNI</th>
+                        <th>Estado</th>
+                        <th>Proyecto</th>
+                        <th>Fecha Alta</th>
+                        <th>Modificar</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php
-                      $pdo = Database::connect();
-                      $sql = 'SELECT * FROM stock WHERE stktipo = "Celular" AND stkasignacion NOT IN ("BAJA") ORDER BY stkmarca,stkmodelo';
-                      foreach ($pdo->query($sql) as $row) {
-               	        echo '<tr>';
-                        echo '  <td>'. $row['stkmarca'] . '</td>';
-                        echo '  <td>'. $row['stkmodelo'] . '</td>';
-                        echo '  <td>'. $row['stkserie'] . '</td>';
-                        echo '  <td>'. $row['stkasignacion'] . '</td>';
-                        echo '  <td align="center">';
-                        echo '    <a class="btn btn-success btn-circle btn-sm" href="modCelular.php?id='.$row['stkid'].'" >';
-                        echo '      <i class="fas fa-check"></i>';
-                        echo '    </a>';
-                        echo '  </td> ';
-                        echo '  <td align="center">';
-                        echo '    <a href="pdfBien.php?nombre='.$row['stkasignacion'].'&tipo='.$row['stktipo'].'&marca='.$row['stkmarca'].'&modelo='.$row['stkmodelo'].'&serie='.$row['stkserie'].'&numero='.$row['stknumero'].'" class="btn btn-success btn-circle btn-sm">';
-                        echo '      <i class="fas fa-file-pdf"></i>';
-                        echo '    </a>';
-                        echo '  </td>';
-                        echo '</tr>';
-                      }
-                      Database::disconnect();
+                        $pdo = Database::connect();
+                        $sql = 'SELECT * FROM personas WHERE perestado != "BAJA" and pernombre != "STOCK" ORDER BY pernombre';
+                        foreach ($pdo->query($sql) as $row) {
+                            echo '<tr>';
+                            echo '  <td>'. $row['pernombre'] . '</td>';
+                            echo '  <td>'. $row['perdni'] . '</td>';
+                            echo '  <td>'. $row['perestado'] . '</td>';
+                            echo '  <td>'. $row['perasig'] . '</td>';
+                            echo '  <td>'. $row['perfecalta'] . '</td>';
+                            echo '  <td align="center">';
+                            echo '      <a class="btn btn-success btn-circle btn-sm" href="modPersona.php?id='.$row['perid'].'" >';
+                            echo '      <i class="fas fa-check"></i>';
+                            echo '    </a>';
+                            echo '  </td> ';
+                            echo '</tr>';
+                        }
+                        Database::disconnect();
                     ?>
-                  </tbody>
+                    </tbody>
                 </table>
               </div>
             </div>
