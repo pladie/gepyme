@@ -3,12 +3,12 @@
 
   if (!isset($_SESSION['username'])) {
     $_SESSION['msg'] = "You must log in first";
-    header('location: ../index.php');
+    header('location: ../web/');
   } 
   if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['username']);
-    header("location: ../index.php");
+    header("location: ../web/");
   }
   require_once '../database.php';
 
@@ -18,156 +18,41 @@
 
   $sqlB = "INSERT factemp ( SELECT provnombre,NULL,NULL,NULL,NULL,NULL FROM proveedores WHERE provestado != 'BAJA' AND protipo = 'NO' ORDER BY 1);";
 	
-	$sqlC = "UPDATE factemp,( SELECT facproveedor,round(sum(evAdmin + evAprod)/2,2) AS 'Indicador'
-										 FROM ( SELECT facproveedor,
-															round(avg(case facevaladmin
-															when 'Malo'      then 1
-															when 'Regular'   then 2
-															when 'Bueno'     then 3
-															when 'Excelente' then 4
-														else 0 end)) AS evAdmin,
-														round(avg(case facevalprod
-															when 'Malo'      then 1
-															when 'Regular'   then 2
-															when 'Bueno'     then 3
-															when 'Excelente' then 4
-														else 0 end)) AS evAprod
-													FROM facturas
-												  WHERE facproveedor IN (SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 0 ORDER BY 1)
-													 AND facfecha BETWEEN '2019-01-01' AND '2019-03-31' 
-												  GROUP BY 1
-												) AS tbl1 GROUP BY 1
-									) AS tbl2
-					SET EneMar = case Indicador
-										when '1.00' then 'Malo'
-										when '2.00' then 'Regular'
-										when '2.50' then 'Regular'
-										when '2.75' then 'Regular'
-										when '3.00' then 'Bueno'
-										when '4.00' then 'Excelente'
-									 else 'N/A' end
-				 WHERE factemp.facproveedor = tbl2.facproveedor;commit;";
+	$sqlC = "UPDATE factemp as t
+              set EneMar = (select avg(f.facevalprod)
+                              from facturas as f 
+                             where t.facproveedor = f.facproveedor
+                               and f.facfecha BETWEEN '2019-01-01' AND '2019-03-31'
+                          group by f.facproveedor);";
 
-	$sqlD = "UPDATE factemp,( SELECT facproveedor,round(sum(evAdmin + evAprod)/2,2) AS 'Indicador'
-										 FROM ( SELECT facproveedor,
-															round(avg(case facevaladmin
-															when 'Malo'      then 1
-															when 'Regular'   then 2
-															when 'Bueno'     then 3
-															when 'Excelente' then 4
-														else 0 end)) AS evAdmin,
-														round(avg(case facevalprod
-															when 'Malo'      then 1
-															when 'Regular'   then 2
-															when 'Bueno'     then 3
-															when 'Excelente' then 4
-														else 0 end)) AS evAprod
-													FROM facturas
-													WHERE facproveedor IN (SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 0 ORDER BY 1)
-													AND facfecha BETWEEN '2019-04-01' and '2019-06-30' 
-													GROUP BY 1
-												) AS tbl1 GROUP BY 1
-									) AS tbl2
-					SET AbrJun = case Indicador
-										when '1.00' then 'Malo'
-										when '2.00' then 'Regular'
-										when '2.50' then 'Regular'
-										when '2.75' then 'Regular'
-										when '3.00' then 'Bueno'
-										when '4.00' then 'Excelente'
-									 else 'N/A' end
-				 WHERE factemp.facproveedor = tbl2.facproveedor;";
-				 
-	$sqlE = "UPDATE factemp,( SELECT facproveedor,round(sum(evAdmin + evAprod)/2,2) AS 'Indicador'
-										 FROM ( SELECT facproveedor,
-															round(avg(case facevaladmin
-															when 'Malo'      then 1
-															when 'Regular'   then 2
-															when 'Bueno'     then 3
-															when 'Excelente' then 4
-														else 0 end)) AS evAdmin,
-														round(avg(case facevalprod
-															when 'Malo'      then 1
-															when 'Regular'   then 2
-															when 'Bueno'     then 3
-															when 'Excelente' then 4
-														else 0 end)) AS evAprod
-													FROM facturas
-													WHERE facproveedor IN (SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 0 ORDER BY 1)
-													AND facfecha BETWEEN '2019-07-01' and '2019-09-30' 
-													GROUP BY 1
-												) AS tbl1 GROUP BY 1
-									) AS tbl2
-					SET JulSep = case Indicador
-										when '1.00' then 'Malo'
-										when '2.00' then 'Regular'
-										when '2.50' then 'Regular'
-										when '2.75' then 'Regular'
-										when '3.00' then 'Bueno'
-										when '4.00' then 'Excelente'
-									 else 'N/A' end
-				 WHERE factemp.facproveedor = tbl2.facproveedor;";
-				 
-	$sqlF = "UPDATE factemp,( SELECT facproveedor,round(sum(evAdmin + evAprod)/2,2) AS 'Indicador'
-										 FROM ( SELECT facproveedor,
-															round(avg(case facevaladmin
-															when 'Malo'      then 1
-															when 'Regular'   then 2
-															when 'Bueno'     then 3
-															when 'Excelente' then 4
-														else 0 end)) AS evAdmin,
-														round(avg(case facevalprod
-															when 'Malo'      then 1
-															when 'Regular'   then 2
-															when 'Bueno'     then 3
-															when 'Excelente' then 4
-														else 0 end)) AS evAprod
-													FROM facturas
-													WHERE facproveedor IN (SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 0 ORDER BY 1)
-													AND facfecha BETWEEN '2019-10-01' and '2019-12-31'
-													GROUP BY 1
-												) AS tbl1 GROUP BY 1
-									) AS tbl2
-					SET OctDic = case Indicador
-										when '1.00' then 'Malo'
-										when '2.00' then 'Regular'
-										when '2.50' then 'Regular'
-										when '2.75' then 'Regular'
-										when '3.00' then 'Bueno'
-										when '4.00' then 'Excelente'
-									 else 'N/A' end
-				 WHERE factemp.facproveedor = tbl2.facproveedor;";
+  $sqlD = "UPDATE factemp as t
+              set AbrJun = (select avg(f.facevalprod)
+                              from facturas as f 
+                             where t.facproveedor = f.facproveedor
+                               and f.facfecha BETWEEN '2019-04-01' AND '2019-06-30'
+                          group by f.facproveedor);";
 
-				$sqlG = "UPDATE factemp,( SELECT facproveedor,round(sum(evAdmin + evAprod)/2,2) AS 'Indicador'
-				FROM ( SELECT facproveedor,
-								round(avg(case facevaladmin
-								when 'Malo'      then 1
-								when 'Regular'   then 2
-								when 'Bueno'     then 3
-								when 'Excelente' then 4
-							else 0 end)) AS evAdmin,
-							round(avg(case facevalprod
-								when 'Malo'      then 1
-								when 'Regular'   then 2
-								when 'Bueno'     then 3
-								when 'Excelente' then 4
-							else 0 end)) AS evAprod
-						FROM facturas
-						WHERE facproveedor IN (SELECT provnombre FROM proveedores WHERE provestado != 'BAJA' AND protipo = 0 ORDER BY 1)
-						AND facfecha BETWEEN '2020-01-01' and '2020-03-31'
-						GROUP BY 1
-					) AS tbl1 GROUP BY 1
-				) AS tbl2
-				SET factempAct = case Indicador
-				when '1.00' then 'Malo'
-				when '2.00' then 'Regular'
-				when '2.50' then 'Regular'
-				when '2.75' then 'Regular'
-				when '3.00' then 'Bueno'
-				when '4.00' then 'Excelente'
-				else 'N/A' end
-				WHERE factemp.facproveedor = tbl2.facproveedor;";
-	
+  $sqlE = "UPDATE factemp as t
+              set JulSep = (select avg(f.facevalprod)
+                              from facturas as f 
+                             where t.facproveedor = f.facproveedor
+                               and f.facfecha BETWEEN '2019-07-01' AND '2019-09-30'
+                          group by f.facproveedor);";                                    
+
+  $sqlF = "UPDATE factemp as t
+              set OctDic = (select avg(f.facevalprod)
+                              from facturas as f 
+                             where t.facproveedor = f.facproveedor
+                               and f.facfecha BETWEEN '2019-10-01' AND '2019-12-31'
+                          group by f.facproveedor);";
+
+  $sqlG = "UPDATE factemp as t
+              set factempAct = (select avg(f.facevalprod)
+                                  from facturas as f 
+                                 where t.facproveedor = f.facproveedor
+                                   and f.facfecha BETWEEN '2020-01-01' AND '2020-03-31'
+                              group by f.facproveedor);";
+
 	$pdo->query($sqlA);
 	$pdo->query($sqlB);
 	$pdo->query($sqlC);
@@ -176,7 +61,13 @@
 	$pdo->query($sqlF);
 	$pdo->query($sqlG);
 	
-	$sql1 = "SELECT * FROM factemp;";
+	$sql1 = "SELECT facproveedor,
+                  CASE EneMar WHEN 1 THEN 'Malo' WHEN 2 THEN 'Regular' WHEN 3 THEN 'Bueno' WHEN 4 THEN 'Excelente' ELSE 'N/A' END AS EneMar,
+                  CASE AbrJun WHEN 1 THEN 'Malo' WHEN 2 THEN 'Regular' WHEN 3 THEN 'Bueno' WHEN 4 THEN 'Excelente' ELSE 'N/A' END AS AbrJun,
+                  CASE JulSep WHEN 1 THEN 'Malo' WHEN 2 THEN 'Regular' WHEN 3 THEN 'Bueno' WHEN 4 THEN 'Excelente' ELSE 'N/A' END AS JulSep,
+                  CASE OctDic WHEN 1 THEN 'Malo' WHEN 2 THEN 'Regular' WHEN 3 THEN 'Bueno' WHEN 4 THEN 'Excelente' ELSE 'N/A' END AS OctDic,
+                  CASE factempAct WHEN 1 THEN 'Malo' WHEN 2 THEN 'Regular' WHEN 3 THEN 'Bueno' WHEN 4 THEN 'Excelente' ELSE 'N/A' END AS factempAct
+             FROM factemp;";
 
   Database::disconnect();
 ?>
@@ -228,8 +119,12 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Evolución de proveedores con factura.</h1>
-          <p class="mb-4">Tabla con las úlitmas calificaciones de los proveedores.</p>
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-2 text-gray-800">Evolución de proveedores con factura.</h1>
+            <a href="exportToCSV.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Descargar en CSV</a>
+            
+          </div>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">

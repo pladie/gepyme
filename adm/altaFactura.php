@@ -114,11 +114,11 @@
                 <tr><th><br></th></tr>
                 <tr align="left"><th>Ev. Prod./Serv.:</th>
                     <th><select name="evpro">
-                            <option value="N/A">N/A</option>
-                            <option value="Malo">Malo</option>
-                            <option value="Regular">Regular</option>
-                            <option value="Bueno">Bueno</option>
-                            <option value="Excelente">Excelente</option>
+                            <option value="0">N/A</option>
+                            <option value="1">Malo</option>
+                            <option value="2">Regular</option>
+                            <option value="3">Bueno</option>
+                            <option value="4">Excelente</option>
                         </select>
                     </th>
                 </tr> 

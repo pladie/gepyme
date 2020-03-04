@@ -1,5 +1,4 @@
 <?php
-  session_start();
 
   require_once '../database.php';
   $pdo = Database::connect();

@@ -96,7 +96,7 @@
         <div class="container-fluid">
 
             <h3>Alta de Celular</h3>
-            <form class="form-horizontal" action="altaPer.php" method="post">
+            <form class="form-horizontal" action="altaPersona.php" method="post">
                 <table class="table">
                     <tr><th>Nombre :</th> <th><input name="nombre" type="text" placeholder="Nombre" value="<?php echo !empty($nombre)?$nombre:'';?>"></th></tr>
                     <tr><th>DNI :</th>    <th><input name="dni"    type="text" placeholder="DNI"    value="<?php echo !empty($dni)?$dni:'';?>"></th></tr>
