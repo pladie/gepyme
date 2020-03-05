@@ -123,7 +123,6 @@
             <h1 class="h3 mb-2 text-gray-800">Evolución de proveedores con factura.</h1>
             <a href="exportToCSV.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-download fa-sm text-white-50"></i> Descargar en CSV</a>
-            
           </div>
 
           <!-- DataTales Example -->

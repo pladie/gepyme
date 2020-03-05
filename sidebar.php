@@ -68,6 +68,7 @@
             echo '      <h6 class="collapse-header">Facturas:</h6>';
             echo '          <a class="collapse-item" href="../adm/altaFactura.php">Ingreso de Facturas</a>';
             echo '          <a class="collapse-item" href="../adm/bmFactura.php">Modificación de Facturas</a>';
+            echo '          <a class="collapse-item" href="../adm/verFactura.php">Visualización de Facturas</a>';
             echo '      <h6 class="collapse-header">Proveedores:</h6>';
             echo '          <a class="collapse-item" href="../adm/altaProveedor.php">Alta de Proveedor</a>';
             echo '      <h6 class="collapse-header">Indicadores:</h6>';

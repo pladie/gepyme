@@ -3,13 +3,13 @@
 
     if (!isset($_SESSION['username'])) {
         $_SESSION['msg'] = "You must log in first";
-        header('location: ../index.php');
+        header('location: ../web/');
     }
 
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['username']);
-        header("location: ../index.php");
+        header("location: ../web/");
     }
 
     require_once '../database.php';
@@ -49,6 +49,7 @@
             header("Location: altaFactura.php");
         }
     }
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,6 +124,10 @@
                     </th>
                 </tr> 
                 <tr><th><br></th></tr>
+                <tr><th>
+                  <input type="file" name="files[]" multiple />
+                </th></tr>
+                <tr><th><br></th></tr>
                 <tr align="center"><th colspan="2"><input type="submit" value="Dar de alta"></th></tr>
          </table>
        </form>
@@ -151,6 +156,9 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
+
+  <!-- Script para la carga de archivos-->
+  <script src="../js/upload.js"></script>
 
 </body>
 

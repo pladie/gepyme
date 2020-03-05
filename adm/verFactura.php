@@ -11,8 +11,6 @@
         unset($_SESSION['username']);
         header("location: ../web/");
     }
-
-    require_once '../database.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,8 +60,7 @@
 
         <!-- <form class="user"> -->
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Listado de facturas.</h1>
-          <p class="mb-4">Facturas ordenadas desde la mas reciente.</p>
+        <h1 class="h3 mb-2 text-gray-800">Listado de imagenes de Facturas.</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -72,47 +69,22 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Fecha</th>
-                      <th>Factura</th>
-                      <th>Proveedor</th>
-                      <th>Importe</th>
-                      <th>Evaluacion</th>
-                      <th>Editar</th>
-                      <th>Borrar</th>
+                      <th>Comprobante</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Fecha</th>
-                      <th>Factura</th>
-                      <th>Proveedor</th>
-                      <th>Importe</th>
-                      <th>Evaluacion</th>
-                      <th>Editar</th>
-                      <th>Borrar</th>
+                        <th>Comprobante</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php
-                      $pdo = Database::connect();
-                      $sql = 'SELECT * FROM facturas WHERE facnro <> "" ORDER BY facfecha DESC';      
-                      foreach ($pdo->query($sql) as $row) {
+                        $dir = '../uploads';
+                        $archivos = array_diff(scandir($dir), array('..', '.'));
+
+                      foreach ($archivos as $row) {
                         echo '<tr>';
-                        echo '<td>'. $row['facfecha'] . '</td>';
-                        echo '<td>'. $row['facnro'] . '</td>';
-                        echo '<td>'. $row['facproveedor'] . '</td>';
-                        echo '<td>'. $row['facimporte'] . '</td>';
-                        echo '<td align="center">'. $row['facevalprod'] . '</td>';
-                        echo '<td align="center">';
-                        echo '  <a class="btn btn-warning btn-circle btn-sm" href="modiFactura.php?id='.$row['facid'].'" >';
-                        echo '    <i class="fas fa-exclamation-triangle"></i>';
-                        echo '  </a>';
-                        echo '</td> ';
-                        echo '<td align="center">';
-                        echo '  <a href="bajaFactura.php?id='.$row['facid'].'" class="btn btn-danger btn-circle btn-sm">';
-                        echo '    <i class="fas fa-trash"></i>';
-                        echo '  </a>';
-                        echo '</td>';
+                        echo '<td><a href="'. $dir . '/' . $row . '">'. $row .'</td>';
                         echo '</tr>';
                       }
                       Database::disconnect();
