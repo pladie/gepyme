@@ -107,8 +107,7 @@
 
           <!-- <form class="user"> -->
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Listado de facturas.</h1>
-            <p class="mb-4">Facturas ordenadas desde la mas reciente.</p>
+          <h1 class="h3 mb-2 text-gray-800">Listado de Tags.</h1>
 
             <form action="modTag.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">

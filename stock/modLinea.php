@@ -3,13 +3,13 @@
 
     if (!isset($_SESSION['username'])) {
         $_SESSION['msg'] = "You must log in first";
-        header('location: ../index.php');
+        header('location: ../web/');
     }
 
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['username']);
-        header("location: ../index.php");
+        header("location: ../web/");
     }
 
     require_once '../database.php';
@@ -107,10 +107,9 @@
 
           <!-- <form class="user"> -->
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Listado de facturas.</h1>
-            <p class="mb-4">Facturas ordenadas desde la mas reciente.</p>
+          <h1 class="h3 mb-2 text-gray-800">Listado de Lineas.</h1>
 
-            <form action="modTag.php" method="post">
+            <form action="modLinea.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <table class="table" >
                                 <tr align="left"><th>Modelo:</th><th><input type="text" id="mod"   name="mod"   tabindex="2" value="<?php echo $mod; ?>"></th></tr>

@@ -3,13 +3,13 @@
 
     if (!isset($_SESSION['username'])) {
         $_SESSION['msg'] = "You must log in first";
-        header('location: ../index.php');
+        header('location: ../web/');
     }
 
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['username']);
-        header("location: ../index.php");
+        header("location: ../web/");
     }
 
     require_once '../database.php';
@@ -76,7 +76,7 @@
                         <th>Serie</th>
                         <th>Asignacion</th>
                         <th>Editar</th>
-                        <th>Borrar</th>
+                        <th>Remito</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -85,7 +85,7 @@
                         <th>Serie</th>
                         <th>Asignacion</th>
                         <th>Editar</th>
-                        <th>Borrar</th>
+                        <th>Remito</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -104,8 +104,8 @@
                         echo '  </a>';
                         echo '</td> ';
                         echo '<td align="center">';
-                        echo '  <a href="bajaTag.php?id='.$row['stkid'].'" class="btn btn-danger btn-circle btn-sm">';
-                        echo '    <i class="fas fa-trash"></i>';
+                        echo '  <a href="pdfBien.php?id='.$row['stkid'].'" class="btn btn-success btn-circle btn-sm">';
+                        echo '    <i class="fas fa-file-pdf"></i>';
                         echo '  </a>';
                         echo '</td>';
                         echo '</tr>';

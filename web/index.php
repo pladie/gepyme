@@ -35,7 +35,7 @@
             <!-- Nested Row within Card Body -->
             <div class="row">
               <div class="col-lg-6 d-none d-lg-block">
-                <img  src="../img/logo.png" width="350" height="350">
+                <img  src="../img/sndLogo400x400.jpg" width="450" height="450">
               </div>
               <div class="col-lg-6">
                 <div class="p-5">
