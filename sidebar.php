@@ -71,8 +71,10 @@
             echo '          <a class="collapse-item" href="../adm/verFactura.php">Visualización de Facturas</a>';
             echo '      <h6 class="collapse-header">Proveedores:</h6>';
             echo '          <a class="collapse-item" href="../adm/altaProveedor.php">Alta de Proveedor</a>';
+            echo '          <a class="collapse-item" href="../adm/bmProveedor.php">Modificación de Proveedor</a>';
             echo '      <h6 class="collapse-header">Indicadores:</h6>';
             echo '          <a class="collapse-item" href="../adm/indicFac.php">Ev. Prov. C/Fact.</a>';
+            echo '          <a class="collapse-item" href="../adm/indicSFac.php">Ev. Prov. S/Fact.</a>';
             echo '    </div>';
             echo '  </div>';
             echo '</li>';

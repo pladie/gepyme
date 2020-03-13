@@ -62,8 +62,7 @@
 
         <!-- <form class="user"> -->
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Listado de Tags.</h1>
-          <p class="mb-4">Tags en stock.</p>
+        <h1 class="h3 mb-2 text-gray-800">Listado de Proveedores.</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -72,45 +71,42 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                        <th>Modelo</th>
-                        <th>Serie</th>
-                        <th>Asignacion</th>
-                        <th>Editar</th>
-                        <th>Remito</th>
+                      <th>Razon Social</th>
+                      <th>Estado</th>
+                      <th>Tipo</th>
+                      <th>Editar</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                        <th>Modelo</th>
-                        <th>Serie</th>
-                        <th>Asignacion</th>
-                        <th>Editar</th>
-                        <th>Remito</th>
+                      <th>Razon Social</th>
+                      <th>Estado</th>
+                      <th>Tipo</th>
+                      <th>Editar</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php
                       $pdo = Database::connect();
-                      $sql = 'SELECT * FROM stock WHERE stktipo = "Tag" AND stkestado NOT IN ("BAJA") ORDER BY stkmodelo';
-                      
-                      foreach ($pdo->query($sql) as $row) {
-                        echo '<tr>';
-                        echo '<td>'. $row['stkmodelo'] . '</td>';
-                        echo '<td>'. $row['stkserie'] . '</td>';
-                        echo '<td>'. $row['stkasignacion'] . '</td>';
-                        echo '<td align="center">';
-                        echo '  <a class="btn btn-warning btn-circle btn-sm" href="modTag.php?id='.$row['stkid'].'" >';
-                        echo '    <i class="fas fa-exclamation-triangle"></i>';
-                        echo '  </a>';
-                        echo '</td> ';
-                        echo '<td align="center">';
-                        echo '  <a href="pdfBien.php?nombre='.$row['stkasignacion'].'&tipo='.$row['stktipo'].'&marca='.$row['stkmarca'].'&modelo='.$row['stkmodelo'].'&serie='.$row['stkserie'].'&numero='.$row['stknumero'].'" class="btn btn-success btn-circle btn-sm">';
-                        echo '    <i class="fas fa-file-pdf"></i>';
-                        echo '  </a>';
-                        echo '</td>';
-                        echo '</tr>';
-                    }
-                    Database::disconnect();
+                      $sql = 'SELECT provid,
+                                     provnombre,
+                                     provestado,
+                                     CASE protipo WHEN "SI" THEN "C/Fac." WHEN "NO" THEN "S/Fac." ELSE "N/A" END as protipo
+                                     FROM proveedores WHERE provestado != "BAJA" ORDER BY provnombre ASC';      
+
+                        foreach ($pdo->query($sql) as $row) {
+                            echo '<tr>';
+                            echo '  <td>'. $row['provnombre'] . '</td>';
+                            echo '  <td>'. $row['provestado'] . '</td>';
+                            echo '  <td>'. $row['protipo'] . '</td>';
+                            echo '  <td align="center">';
+                            echo '    <a class="btn btn-warning btn-circle btn-sm" href="modiProveedor.php?id='.$row['provid'].'" >';
+                            echo '      <i class="fas fa-exclamation-triangle"></i>';
+                            echo '    </a>';
+                            echo '  </td> ';
+                            echo '</tr>';
+                        }
+                      Database::disconnect();
                     ?>
                   </tbody>
                 </table>
@@ -151,7 +147,6 @@
   <!-- Page level plugins -->
   <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
-  <script src="vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
   <script src="../js/demo/datatables-demo.js"></script>
