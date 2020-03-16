@@ -20,7 +20,7 @@
     }
 
     if ( null==$id ) {
-        header("Location: bmTag.php");
+        header("Location: bmCelular.php");
     }
 
     if ( !empty($_POST)) {
@@ -44,7 +44,7 @@
           $q = $pdo->prepare($sql);
           $q->execute(array($marca,$mod,$serie,$asig,'ASIGNADO',$id));
           Database::disconnect();
-          header("Location: bmCel.php");
+          header("Location: bmCelular.php");
       }
   } else {
       $pdo = Database::connect();
@@ -111,7 +111,7 @@
           <h1 class="h3 mb-2 text-gray-800">Reasignacion Celulares.</h1>
             <p class="mb-4">Celular.</p>
 
-            <form action="modTag.php" method="post">
+            <form action="modCelular.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <table class="table" >
                                 <tr align="left"><th>Modelo:</th><th><input type="text" id="mod"   name="mod"   tabindex="2" value="<?php echo $mod; ?>"></th></tr>

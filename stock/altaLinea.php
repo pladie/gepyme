@@ -52,7 +52,7 @@
           $q->execute(array('ALTA Linea->STOCK',$serie,'STOCK'));
                    
           Database::disconnect();
-          header("Location: bmLin.php");
+          header("Location: bmLinea.php");
       }
   }
 ?>
@@ -102,7 +102,7 @@
 
 
         <h3>Alta de Línea</h3>
-        <form class="form-horizontal" action="altaLin.php" method="post">
+        <form class="form-horizontal" action="altaLinea.php" method="post">
         		<table class="table" >
         			<tr align="left"><th>Marca :</th>
 						    <th><select name="marca">
